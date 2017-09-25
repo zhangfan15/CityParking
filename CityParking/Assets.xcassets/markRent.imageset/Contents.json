@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "租车服务3.png",
+      "filename" : "coinshenzhou.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "租车服务3-2.png",
+      "filename" : "coinshenzhou@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "租车服务3-3.png",
+      "filename" : "coinshenzhou@3x.png",
       "scale" : "3x"
     }
   ],

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *verticalLine;
+@property (weak, nonatomic) IBOutlet UILabel *horizontalLine;
 
 @end

@@ -9,7 +9,6 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>{
-    BMKMapView          * _mapView;
     NSArray             * titleArr;
     NSArray             * imageNameArr;
     BMKLocationService  * _locService;
@@ -20,24 +19,28 @@
     NSMutableArray      * dataArr;
     NSMutableArray      * pointArr;
     BMKPoiSearch        * _poisearch;
+    BMKNearbySearchOption * option1;
+    BMKNearbySearchOption * option2;
+    BMKNearbySearchOption * option3;
     NSInteger             collectionSelectIndex;
     NSMutableArray      * tableData;
     BOOL                  showParkTable;
+    NSInteger             callBackNumeber;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
-@property (weak, nonatomic) IBOutlet UIView *mapBackView;
+@property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
-//
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapBackViewWidth;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapBackViewHeight;
-
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shadowToBottomDistance;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection;
-
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
+
 
 @end
 
@@ -53,6 +56,10 @@
     _locService.delegate = self;
     //设置打开抽屉模式
     self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -62,15 +69,29 @@
     _mapView.delegate = nil; // 不用时，置nil
     _locService.delegate = nil;
     _poisearch.delegate = nil;
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    } 
 }
 
 - (void)getDataWithCollectSelectIndex:(NSInteger)index {
     switch (index) {//停车场 PMK、神州租车 SZZC、立体 LTK、慢行 MX
         case 0:{
             [self GetMapDataWithType:nil];
-            [self getPOIInfoWithType:@"公交"];
-            [self getPOIInfoWithType:@"地铁"];
-            [self getPOIInfoWithType:@"出租车"];
+            [self getBusPOIInfo];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTrainWithNotification) name:@"getTrainWithNotification" object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTaxiWithNotification) name:@"getTaxiWithNotification" object:nil];
+            //使用并行队列 + 异步执行
+//            dispatch_queue_t queue= dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
+//            dispatch_async(queue, ^{
+//                [self getBusPOIInfo];
+//            });
+//            dispatch_async(queue, ^{
+//                [self getTrainPOIInfo];
+//            });
+//            dispatch_async(queue, ^{
+//                [self getTaxiPOIInfo];
+//            });
         }
             break;
         case 1:{
@@ -91,17 +112,17 @@
             break;
         case 5:{
             [dataArr removeAllObjects];
-            [self getPOIInfoWithType:@"公交"];
+            [self getBusPOIInfo];
         }
             break;
         case 6:{
             [dataArr removeAllObjects];
-            [self getPOIInfoWithType:@"地铁"];
+            [self getTrainPOIInfo];
         }
             break;
         case 7:{
             [dataArr removeAllObjects];
-            [self getPOIInfoWithType:@"出租车"];
+            [self getTaxiPOIInfo];
         }
             break;
             
@@ -134,9 +155,10 @@
                         CGRect tempRect = _headerView.frame;
                         tempRect.size.height = 0;
                         _headerView.frame = tempRect;
+                        [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
 //                        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
 //                        [_table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationRight];
-                        [_table reloadData];
+//                        [_table reloadData];
                     }
                 }
             }
@@ -148,19 +170,62 @@
     }];
 }
 
-- (void)getPOIInfoWithType:(NSString *)type {
-    BMKNearbySearchOption * option = [[BMKNearbySearchOption alloc]init];
-    option.pageIndex = 0;
-    option.pageCapacity = 20;
-    option.radius = 1000;
-    option.location = _mapView.centerCoordinate;
-    option.keyword = type;
-    BOOL flag = [_poisearch poiSearchNearBy:option];
+- (void)getTrainWithNotification {
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"getTrainWithNotification" object:nil];
+    [self getTrainPOIInfo];
+}
+
+- (void)getTaxiWithNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"getTaxiWithNotification" object:nil];
+    [self getTaxiPOIInfo];
+}
+
+- (void)getBusPOIInfo {
+    option1 = [[BMKNearbySearchOption alloc]init];
+    option1.pageIndex = 0;
+    option1.pageCapacity = 20;
+    option1.radius = 3000;
+    option1.location = _mapView.centerCoordinate;
+    option1.keyword = @"公交";
+    BOOL flag = [_poisearch poiSearchNearBy:option1];
     if(flag){
-        NSLog(@"城市内检索发送成功");
+        NSLog(@"公交车检索发送成功");
     }
     else {
-        NSLog(@"城市内检索发送失败");
+        NSLog(@"公交车检索发送失败");
+    }
+}
+
+- (void)getTrainPOIInfo {
+    option2 = [[BMKNearbySearchOption alloc]init];
+    option2.pageIndex = 0;
+    option2.pageCapacity = 20;
+    option2.radius = 3000;
+    option2.location = _mapView.centerCoordinate;
+    option2.keyword = @"地铁";
+    BOOL flag = [_poisearch poiSearchNearBy:option2];
+    if(flag){
+        NSLog(@"地铁检索发送成功");
+    }
+    else {
+        NSLog(@"地铁检索发送失败");
+    }
+}
+
+- (void)getTaxiPOIInfo {
+    option3 = [[BMKNearbySearchOption alloc]init];
+    option3.pageIndex = 0;
+    option3.pageCapacity = 20;
+    option3.radius = 3000;
+    option3.location = _mapView.centerCoordinate;
+    option3.keyword = @"出租车";
+    BOOL flag = [_poisearch poiSearchNearBy:option3];
+    if(flag){
+        NSLog(@"出租车检索发送成功");
+    }
+    else {
+        NSLog(@"出租车检索发送失败");
     }
 }
 
@@ -186,13 +251,81 @@
     [_mapView addAnnotations:mutableArray];
 }
 
+#pragma mark UISwipeGestureRecognizer响应方法
+
+- (IBAction)tableSwipUp:(UISwipeGestureRecognizer *)sender {
+    float stopY = 0;     // 停留的位置
+    float animateY = 0;  // 做弹性动画的Y
+    float margin = 10;   // 动画的幅度
+    float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
+    if (offsetY <= Y2) {
+        // 停在y1的位置
+        stopY = Y1;
+        // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
+        self.table.scrollEnabled = YES;
+    }else if (offsetY > Y2 && offsetY <= Y3 ){
+        // 停在y2的位置
+        stopY = Y2;
+        self.table.scrollEnabled = NO;
+    }else{
+        stopY = Y3;
+    }
+    animateY = stopY - margin;
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        
+        self.shadowView.frame = CGRectMake(0, animateY, SCREEN_WIDTH, SCREEN_HEIGHT-animateY);
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.shadowView.frame = CGRectMake(0, stopY, SCREEN_WIDTH, SCREEN_HEIGHT-stopY);
+        }];
+    }];
+}
+
+- (IBAction)tableSwipDown:(UISwipeGestureRecognizer *)sender {
+    float stopY = 0;     // 停留的位置
+    float animateY = 0;  // 做弹性动画的Y
+    float margin = 10;   // 动画的幅度
+    float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
+    if (self.table.contentOffset.y == 0) {
+        self.table.scrollEnabled = NO;
+    }
+    
+    if (offsetY >= Y1 && offsetY < Y2) {
+        // 停在y2的位置
+        stopY = Y2;
+    }else if (offsetY >= Y2 ){
+        // 停在y3的位置
+        stopY = Y3;
+    }else{
+        stopY = Y1;
+    }
+    animateY = stopY + margin;
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        
+        self.shadowView.frame = CGRectMake(0, animateY, SCREEN_WIDTH, SCREEN_HEIGHT-animateY);
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.shadowView.frame = CGRectMake(0, stopY, SCREEN_WIDTH, SCREEN_HEIGHT-stopY);
+        }];
+    }];
+    // 记录shadowView在第一个视图中的位置
+//    self.vc.offsetY = stopY;
+}
+
 - (IBAction)backToMenu:(UISwipeGestureRecognizer *)sender {
     [tableData removeAllObjects];
     showParkTable = NO;
     CGRect tempRect = _headerView.frame;
-    tempRect.size.height = (SCREEN_WIDTH-40)/2+40;
+    tempRect.size.height = CollectionHeight;
     _headerView.frame = tempRect;
-    [_table reloadData];
+    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+//    [_table reloadData];
 //    [_table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
@@ -203,14 +336,19 @@
     pointArr = [NSMutableArray array];
     tableData = [NSMutableArray array];
     netManager = [NetworkTool shareNetworkTool];
-    _mapBackViewHeight.constant = SCREEN_HEIGHT-(SCREEN_WIDTH-40)/2-40;
-    
+    _mapViewHeight.constant = SCREEN_HEIGHT - CollectionHeight-20;
+    _tableViewHeight.constant = SCREEN_HEIGHT - 50;
+    _shadowToBottomDistance.constant = -(SCREEN_HEIGHT - CollectionHeight - 50 - 20);
+//    _shadowToHeaderDistance.constant = SCREEN_HEIGHT-CollectionHeight;
+//    [self.shadowView removeFromSuperview];
+//    self.shadowView.frame = CGRectMake(0, Y3, SCREEN_WIDTH, SCREEN_HEIGHT - 50);
+//    [self.view addSubview:self.shadowView];
+//    _shadowView.frame = CGRectMake(0, Y3, SCREEN_WIDTH, _tableViewHeight.constant);
     CGRect tempRect = _headerView.frame;
-    tempRect.size.height = (SCREEN_WIDTH-40)/2+40;
+    tempRect.size.height = CollectionHeight;
     _headerView.frame = tempRect;
-    _table.tableHeaderView = _headerView;//tableHeaderView的高度是根据headerView来的，前提最后一个view约束不能给定高度，必须要与headerView的bottom设置约束关系，在没有view的时候，可以设置tableHeaderView的高度，在有view的时候只能用view的高度，在设置tableHeaderview.height 不起作用
-    [_table reloadData];
-
+    _table.tableHeaderView = _headerView;
+    
     titleArr = @[@"全部",@"停车",@"神州租车",@"立体",@"慢行",@"巴士",@"地铁",@"出租车"];
     imageNameArr = @[@"markAll",@"markPark",@"markRent",@"markBuilding",@"markBike",@"markBus",@"markTrain",@"markTaxi"];
     tableImageArr = @[@"markHome",@"markCompany"];
@@ -243,7 +381,7 @@
     _locService = [[BMKLocationService alloc]init];
     _poisearch = [[BMKPoiSearch alloc]init];
     _poisearch.delegate = self;
-    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _mapBackViewHeight.constant)];
+//    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _mapBackViewHeight.constant)];
     if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_COMMON]) {
         NSLog(@"经纬度类型设置成功");
     } else {
@@ -256,7 +394,7 @@
     _mapView.zoomLevel = 17;
     _mapView.isSelectedAnnotationViewFront = YES;
     [_mapView showMapPoi];
-    [self.mapBackView insertSubview:_mapView atIndex:0];
+//    [self.mapBackView insertSubview:_mapView atIndex:0];
 }
 
 
@@ -331,9 +469,35 @@
     else if (errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD){
         //当在设置城市未找到结果，但在其他城市找到结果时，回调建议检索城市列表
         // result.cityList;
+        if (collectionSelectIndex) {
+            NSArray * annotationArr = _mapView.annotations;
+            if (annotationArr.count) {
+                [_mapView removeAnnotations:annotationArr];
+            }
+            annotationArr = nil;
+        }
         NSLog(@"起始点有歧义");
     } else {
+        if (collectionSelectIndex) {
+            NSArray * annotationArr = _mapView.annotations;
+            if (annotationArr.count) {
+                [_mapView removeAnnotations:annotationArr];
+            }
+            annotationArr = nil;
+        }
+        
         NSLog(@"抱歉，未找到结果");
+    }
+    
+    if (!collectionSelectIndex) {
+        if (!callBackNumeber) {
+            callBackNumeber ++;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"getTrainWithNotification" object:nil];
+        } else {
+            callBackNumeber = 0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"getTaxiWithNotification" object:nil];
+            
+        }
     }
 }
 
@@ -419,6 +583,18 @@
     cell.textLabel.text = titleArr[indexPath.item];
     NSString *imageName = imageNameArr[indexPath.item];
     cell.imageView.image = [UIImage imageNamed:imageName];
+    if (indexPath.item == 3 || indexPath.item ==7) {
+        cell.verticalLine.hidden = YES;
+    } else {
+        cell.verticalLine.hidden = NO;
+    }
+    
+    if (indexPath.item == 4 || indexPath.item ==5 || indexPath.item == 6 || indexPath.item ==7) {
+        cell.horizontalLine.hidden = YES;
+    } else {
+        cell.horizontalLine.hidden = NO;
+    }
+    
     return cell;
     
 }
@@ -442,25 +618,14 @@
 #pragma mark UITableViewDataSource,UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (showParkTable) {
-        return 1;
-    }
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (showParkTable) {
         return tableData.count;
     }
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-        case 1:
-            return 2;
-            break;
-    }
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -486,7 +651,7 @@
         
         return cell;
     }else {
-        if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
             NSString *CellIdentifier = @"LXMapSearchCell";
             mapSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (!cell) {
@@ -500,9 +665,9 @@
             if (!cell) {
                 cell = [[mapEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            NSString * imageName = tableImageArr[indexPath.row];
+            NSString * imageName = tableImageArr[indexPath.row-1];
             cell.image.image = [UIImage imageNamed:imageName];
-            cell.titleLabel.text = tableTitleArr[indexPath.row];
+            cell.titleLabel.text = tableTitleArr[indexPath.row-1];
             
             return cell;
         }
@@ -521,6 +686,11 @@
         lable.text = @"最近停车场";
         [view addSubview:lable];
         return view;
+    } else {
+//        [_headerView removeFromSuperview];
+//         UIView * view = [_headerView copy];
+//        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CollectionHeight);
+//        return _headerView;
     }
     return Nil;
 }
@@ -529,11 +699,7 @@
     if (showParkTable) {
         return 30;
     }
-    if (section == 0) {
-        return 0.f;
-    } else {
-        return 20.f;
-    }
+    return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -544,6 +710,10 @@
     if (showParkTable) {
         return 106;
     }
+    
+//    if (!indexPath.row) {
+//        return 44;
+//    }
     return 44;
 }
 
@@ -563,11 +733,11 @@
             CGRect bounds = CGRectInset(cell.bounds, 0, 0);
             
             if (indexPath.row == 0 && indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
-                
+
                 CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
-                
-            } else if (indexPath.row == 0) {
-                
+
+            } else if (indexPath.row == 1) {
+            
                 CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
                 
                 CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
