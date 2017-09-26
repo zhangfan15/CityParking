@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>{
+@interface MainViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>{
     NSArray             * titleArr;
     NSArray             * imageNameArr;
     BMKLocationService  * _locService;
@@ -253,20 +253,42 @@
 
 #pragma mark UISwipeGestureRecognizer响应方法
 
+- (IBAction)clickMapViewToHideTable:(UITapGestureRecognizer *)sender {
+    float stopY = 0;     // 停留的位置
+    float animateY = 0;  // 做弹性动画的Y
+    float margin = 10;   // 动画的幅度
+    float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
+    if (self.table.contentOffset.y == 0) {
+        self.table.scrollEnabled = NO;
+    }
+    
+    if (offsetY == Y1) {
+        stopY = Y3;
+        
+        animateY = stopY + margin;
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            
+            self.shadowView.frame = CGRectMake(0, animateY, SCREEN_WIDTH, SCREEN_HEIGHT-animateY);
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                self.shadowView.frame = CGRectMake(0, stopY, SCREEN_WIDTH, SCREEN_HEIGHT-stopY);
+            }];
+        }];
+    }
+}
 - (IBAction)tableSwipUp:(UISwipeGestureRecognizer *)sender {
     float stopY = 0;     // 停留的位置
     float animateY = 0;  // 做弹性动画的Y
     float margin = 10;   // 动画的幅度
     float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
-    if (offsetY <= Y2) {
+    if (offsetY == Y3) {
         // 停在y1的位置
         stopY = Y1;
         // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
         self.table.scrollEnabled = YES;
-    }else if (offsetY > Y2 && offsetY <= Y3 ){
-        // 停在y2的位置
-        stopY = Y2;
-        self.table.scrollEnabled = NO;
     }else{
         stopY = Y3;
     }
@@ -289,15 +311,16 @@
     float animateY = 0;  // 做弹性动画的Y
     float margin = 10;   // 动画的幅度
     float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
+//    UIScrollView * scrollView = (UIScrollView *)_table.superview;
+//    NSIndexPath *path =  [_table indexPathForRowAtPoint:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y)];
+//    if (path.row == 0) {
+//        _table.scrollEnabled = NO;
+//    }
     if (self.table.contentOffset.y == 0) {
         self.table.scrollEnabled = NO;
     }
     
-    if (offsetY >= Y1 && offsetY < Y2) {
-        // 停在y2的位置
-        stopY = Y2;
-    }else if (offsetY >= Y2 ){
-        // 停在y3的位置
+    if (offsetY == Y1) {
         stopY = Y3;
     }else{
         stopY = Y1;
@@ -316,6 +339,10 @@
     }];
     // 记录shadowView在第一个视图中的位置
 //    self.vc.offsetY = stopY;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
 }
 
 - (IBAction)backToMenu:(UISwipeGestureRecognizer *)sender {

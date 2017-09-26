@@ -116,31 +116,31 @@
             self.vc.table.scrollEnabled = NO;
         }
         
-        if (offsetY >= Y1 && offsetY < Y2) {
-            // 停在y2的位置
-            stopY = Y2;
-        }else if (offsetY >= Y2 ){
-            // 停在y3的位置
-            stopY = Y3;
-        }else{
-            stopY = Y1;
-        }
+//        if (offsetY >= Y1 && offsetY < Y2) {
+//            // 停在y2的位置
+//            stopY = Y2;
+//        }else if (offsetY >= Y2 ){
+//            // 停在y3的位置
+//            stopY = Y3;
+//        }else{
+//            stopY = Y1;
+//        }
         animateY = stopY + margin;
     }
     if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
         //        NSLog(@"==== up =====");
         
-        if (offsetY <= Y2) {
-            // 停在y1的位置
-            stopY = Y1;
-            // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
-            self.vc.table.scrollEnabled = YES;
-        }else if (offsetY > Y2 && offsetY <= Y3 ){
-            // 停在y2的位置
-            stopY = Y2;
-        }else{
-            stopY = Y3;
-        }
+//        if (offsetY <= Y2) {
+//            // 停在y1的位置
+//            stopY = Y1;
+//            // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
+//            self.vc.table.scrollEnabled = YES;
+//        }else if (offsetY > Y2 && offsetY <= Y3 ){
+//            // 停在y2的位置
+//            stopY = Y2;
+//        }else{
+//            stopY = Y3;
+//        }
         animateY = stopY - margin;
     }
     

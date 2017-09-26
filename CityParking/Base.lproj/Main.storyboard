@@ -150,6 +150,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRB-KY-pTX" customClass="BMKMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="586"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pVq-kV-9e1" appends="YES" id="LHb-md-Hde"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssI-1I-gfW">
                                         <rect key="frame" x="372" y="509" width="34" height="35"/>
@@ -508,6 +512,8 @@
                                             <outlet property="dataSource" destination="ghJ-Dp-Ik8" id="q7J-NS-Yod"/>
                                             <outlet property="delegate" destination="ghJ-Dp-Ik8" id="F6p-mj-YUi"/>
                                             <outletCollection property="gestureRecognizers" destination="NRM-Fw-L5c" appends="YES" id="fZP-ta-WJS"/>
+                                            <outletCollection property="gestureRecognizers" destination="QD9-2f-68y" appends="YES" id="Uwq-5E-slc"/>
+                                            <outletCollection property="gestureRecognizers" destination="Ctu-at-rI9" appends="YES" id="vDW-5I-ocR"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -520,8 +526,8 @@
                                     <constraint firstAttribute="bottom" secondItem="Wkh-ou-Cpf" secondAttribute="bottom" id="qTw-Vq-9Wk"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="QD9-2f-68y" appends="YES" id="qev-sr-EYj"/>
                                     <outletCollection property="gestureRecognizers" destination="Ctu-at-rI9" appends="YES" id="Hiy-6K-R6d"/>
+                                    <outletCollection property="gestureRecognizers" destination="QD9-2f-68y" appends="YES" id="zdh-7u-bdD"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -564,6 +570,11 @@
                         <action selector="tableSwipUp:" destination="ghJ-Dp-Ik8" id="b3T-fT-TId"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="pVq-kV-9e1">
+                    <connections>
+                        <action selector="clickMapViewToHideTable:" destination="ghJ-Dp-Ik8" id="rN1-HC-ZGd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-56.25" y="792.25352112676057"/>
         </scene>

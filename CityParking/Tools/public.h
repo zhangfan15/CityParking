@@ -42,7 +42,6 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define CollectionHeight SCREEN_WIDTH/2+10
 #define Y1               50
-#define Y2               CollectionHeight+3*44
 #define Y3               SCREEN_HEIGHT - CollectionHeight - 20
 
 #define UIColorFromHex(s) [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0green:(((s &0xFF00) >>8))/255.0blue:((s &0xFF))/255.0alpha:1.0]
