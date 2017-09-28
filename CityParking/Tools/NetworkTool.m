@@ -163,5 +163,35 @@ static NetworkTool * tool = nil;
         //        NSLog(@"网络请求失败");
     }];
 }
+
+-(void)GetDataWithURL:(NSString *)url AndParams:(NSDictionary *)params Success:(void (^)(NSDictionary *))success Failure:(void (^)(NSString *))failure {
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoadingView];
     
+    //    NSDictionary *param = @{@"user_id":userId, @"sale_date":date, @"accessToken":@"e9c0e60318ebd07ec2fe", @"area_type":areaType};
+    // 创建请求类
+    _sessionManager.requestSerializer.timeoutInterval = 60.0;
+    
+    NSString * httpURL = [NSString stringWithFormat:@"%@%@",BaseURLString,url];
+    
+    [_sessionManager GET:httpURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 这里可以获取到目前数据请求的进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功
+        [(AppDelegate *)[UIApplication sharedApplication].delegate hideLoadingView];
+        NSString *  SuccessStatus = responseObject[@"message"];
+        if (responseObject){
+            if ([SuccessStatus isEqualToString:@"success"]){
+                success(responseObject);
+            }else {
+                failure(responseObject[@"message"]);
+            }
+        }else {
+            NSLog(@"网络请求失败");
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        [(AppDelegate *)[UIApplication sharedApplication].delegate hideLoadingView];
+        //        NSLog(@"网络请求失败");
+    }];
+}
 @end

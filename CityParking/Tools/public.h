@@ -11,10 +11,9 @@
 
 #import "MainViewController.h"
 #import "MMDrawerController.h"
-#import "MapViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "NetworkTool.h"
-#import "SecondViewController.h"
+#import "LoginViewController.h"
 
 #import "MenuCell.h"
 #import "MarkCollectionViewCell.h"
@@ -29,14 +28,19 @@
 #import <BaiduMapKit/BaiduMapAPI_Location/BMKLocationService.h>
 #import <BaiduMapKit/BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import "RKDropdownAlert.h"
+#import "TYAlertController.h"
 
 #import "MarkModel.h"
+#import "UserInfo.h"
 
-#define BaseURLString @"http://cis.3swest.com/mobile/ratecod/queryAllParking"
+#define BaseURLString @"http://cis.3swest.com/"
 
 #define IS_FIRST_LAUNCH   @"IS_FIRST_LAUNCH"  //记录是否第一次启动程序
-
+#define USER_INFORMATION   @"USER_INFORMATION"
 #define MainStoryboard    [UIStoryboard storyboardWithName:@"Main" bundle:nil]
+#define IS_LOGINSUCCESS   @"IS_LOGINSUCCESS"
+#define USER_INFOR_PATH   [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"userInfo"]
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)

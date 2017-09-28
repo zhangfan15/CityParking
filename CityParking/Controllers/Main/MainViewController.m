@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>{
+@interface MainViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,RKDropdownAlertDelegate>{
     NSArray             * titleArr;
     NSArray             * imageNameArr;
     BMKLocationService  * _locService;
@@ -26,6 +26,7 @@
     NSMutableArray      * tableData;
     BOOL                  showParkTable;
     NSInteger             callBackNumeber;
+    CLLocation          * i_userLocation;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -51,6 +52,11 @@
  */
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    NSString * logStatus = [[NSUserDefaults standardUserDefaults] objectForKey:IS_LOGINSUCCESS];
+    if (logStatus == nil || ![logStatus isEqualToString:@"YES"]) {
+        UIViewController * loginVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
     [_mapView viewWillAppear];
     _mapView.delegate = self;
     _locService.delegate = self;
@@ -74,6 +80,15 @@
     } 
 }
 
+#pragma mark RKDropdownAlertDelegate
+-(BOOL)dropdownAlertWasDismissed {
+    return YES;
+}
+
+-(BOOL)dropdownAlertWasTapped:(RKDropdownAlert*)alert {
+    return YES;
+}
+
 - (void)getDataWithCollectSelectIndex:(NSInteger)index {
     switch (index) {//停车场 PMK、神州租车 SZZC、立体 LTK、慢行 MX
         case 0:{
@@ -81,17 +96,6 @@
             [self getBusPOIInfo];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTrainWithNotification) name:@"getTrainWithNotification" object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTaxiWithNotification) name:@"getTaxiWithNotification" object:nil];
-            //使用并行队列 + 异步执行
-//            dispatch_queue_t queue= dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
-//            dispatch_async(queue, ^{
-//                [self getBusPOIInfo];
-//            });
-//            dispatch_async(queue, ^{
-//                [self getTrainPOIInfo];
-//            });
-//            dispatch_async(queue, ^{
-//                [self getTaxiPOIInfo];
-//            });
         }
             break;
         case 1:{
@@ -137,7 +141,7 @@
                                @"lng":[NSString stringWithFormat:@"%f",mapCenter.longitude],
                                @"pageNo":@"1",
                                @"pageSize":@"20"};
-    [netManager GetDataWithParams:paramas AndParamNumber:1 Success:^(NSDictionary *responseObject) {
+    [netManager GetDataWithURL:@"mobile/ratecod/queryAllParking" AndParams:paramas Success:^(NSDictionary *responseObject) {
         NSArray * objectArr = responseObject[@"data"];
         if (objectArr != nil) {
             for (NSDictionary * tempObject in objectArr) {
@@ -156,17 +160,15 @@
                         tempRect.size.height = 0;
                         _headerView.frame = tempRect;
                         [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
-//                        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
-//                        [_table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationRight];
-//                        [_table reloadData];
                     }
                 }
             }
             [self addAnnotationToMapWithData:dataArr];
+        }else {
+            [RKDropdownAlert title:@"当前范围内未找到结果" message:@"" backgroundColor:COLOR_WITH_HEX(0x417293) textColor:nil time:1 delegate:self];
         }
-        
     } Failure:^(NSString *errorInfo) {
-    
+        
     }];
 }
 
@@ -311,11 +313,6 @@
     float animateY = 0;  // 做弹性动画的Y
     float margin = 10;   // 动画的幅度
     float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
-//    UIScrollView * scrollView = (UIScrollView *)_table.superview;
-//    NSIndexPath *path =  [_table indexPathForRowAtPoint:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y)];
-//    if (path.row == 0) {
-//        _table.scrollEnabled = NO;
-//    }
     if (self.table.contentOffset.y == 0) {
         self.table.scrollEnabled = NO;
     }
@@ -359,6 +356,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIViewController * loginVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [self presentViewController:loginVC animated:YES completion:nil];
     dataArr = [NSMutableArray array];
     pointArr = [NSMutableArray array];
     tableData = [NSMutableArray array];
@@ -366,11 +365,6 @@
     _mapViewHeight.constant = SCREEN_HEIGHT - CollectionHeight-20;
     _tableViewHeight.constant = SCREEN_HEIGHT - 50;
     _shadowToBottomDistance.constant = -(SCREEN_HEIGHT - CollectionHeight - 50 - 20);
-//    _shadowToHeaderDistance.constant = SCREEN_HEIGHT-CollectionHeight;
-//    [self.shadowView removeFromSuperview];
-//    self.shadowView.frame = CGRectMake(0, Y3, SCREEN_WIDTH, SCREEN_HEIGHT - 50);
-//    [self.view addSubview:self.shadowView];
-//    _shadowView.frame = CGRectMake(0, Y3, SCREEN_WIDTH, _tableViewHeight.constant);
     CGRect tempRect = _headerView.frame;
     tempRect.size.height = CollectionHeight;
     _headerView.frame = tempRect;
@@ -382,12 +376,6 @@
     tableTitleArr = @[@"带我回家",@"带我上班"];
     
     [self initMapView];
-
-    //2、添加双击手势
-//    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-//    //2.1、双击
-//    [doubleTap setNumberOfTapsRequired:2];
-//    [self.view addGestureRecognizer:doubleTap];
 }
 
 -(IBAction)startLocation:(id)sender
@@ -408,7 +396,6 @@
     _locService = [[BMKLocationService alloc]init];
     _poisearch = [[BMKPoiSearch alloc]init];
     _poisearch.delegate = self;
-//    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _mapBackViewHeight.constant)];
     if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_COMMON]) {
         NSLog(@"经纬度类型设置成功");
     } else {
@@ -421,7 +408,6 @@
     _mapView.zoomLevel = 17;
     _mapView.isSelectedAnnotationViewFront = YES;
     [_mapView showMapPoi];
-//    [self.mapBackView insertSubview:_mapView atIndex:0];
 }
 
 
@@ -435,6 +421,7 @@
 {
     mapCenter = CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
     [_mapView updateLocationData:userLocation];
+    i_userLocation = userLocation.location;
     [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
     [_locService stopUserLocationService];
     [_startBtn setEnabled:YES];
@@ -502,6 +489,7 @@
                 [_mapView removeAnnotations:annotationArr];
             }
             annotationArr = nil;
+            [RKDropdownAlert title:@"当前范围内未找到结果" message:@"" backgroundColor:COLOR_WITH_HEX(0x417293) textColor:nil time:1 delegate:self];
         }
         NSLog(@"起始点有歧义");
     } else {
@@ -511,8 +499,8 @@
                 [_mapView removeAnnotations:annotationArr];
             }
             annotationArr = nil;
+            [RKDropdownAlert title:@"当前范围内未找到结果" message:@"" backgroundColor:COLOR_WITH_HEX(0x417293) textColor:nil time:1 delegate:self];
         }
-        
         NSLog(@"抱歉，未找到结果");
     }
     
@@ -713,11 +701,6 @@
         lable.text = @"最近停车场";
         [view addSubview:lable];
         return view;
-    } else {
-//        [_headerView removeFromSuperview];
-//         UIView * view = [_headerView copy];
-//        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CollectionHeight);
-//        return _headerView;
     }
     return Nil;
 }

@@ -57,8 +57,6 @@
 		7D1E1C501F7266C300FEF451 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E1C201F7266C200FEF451 /* 7.jpg */; };
 		7D1E1C511F7266C300FEF451 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E1C211F7266C200FEF451 /* 8.jpg */; };
 		7D1E1C521F7266C300FEF451 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E1C221F7266C200FEF451 /* 9.jpg */; };
-		7D36859F1F73AE1A009A8A56 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D36859E1F73AE1A009A8A56 /* MapViewController.m */; };
-		7D3685A21F73B3F8009A8A56 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3685A01F73B3F8009A8A56 /* SecondViewController.m */; };
 		7D5F548D1F6F912100DC3E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F548C1F6F912100DC3E2F /* main.m */; };
 		7D5F54901F6F912100DC3E2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F548F1F6F912100DC3E2F /* AppDelegate.m */; };
 		7D5F54961F6F912100DC3E2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D5F54941F6F912100DC3E2F /* Main.storyboard */; };
@@ -74,6 +72,8 @@
 		7D5F54CC1F710CF700DC3E2F /* mapSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54CB1F710CF700DC3E2F /* mapSearchCell.m */; };
 		7D5F54CF1F710D0700DC3E2F /* mapEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54CE1F710D0700DC3E2F /* mapEditCell.m */; };
 		7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D96CF061F711D40005B2116 /* NetworkTool.m */; };
+		7DB988CB1F7B5786009DBC8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CA1F7B5786009DBC8A /* LoginViewController.m */; };
+		7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CC1F7C9276009DBC8A /* UserInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,10 +128,6 @@
 		7D1E1C201F7266C200FEF451 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
 		7D1E1C211F7266C200FEF451 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
 		7D1E1C221F7266C200FEF451 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
-		7D36859D1F73AE1A009A8A56 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		7D36859E1F73AE1A009A8A56 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		7D3685A01F73B3F8009A8A56 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		7D3685A11F73B3F8009A8A56 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		7D5F54881F6F912100DC3E2F /* CityParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5F548C1F6F912100DC3E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7D5F548E1F6F912100DC3E2F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -160,6 +156,10 @@
 		7D5F54CE1F710D0700DC3E2F /* mapEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapEditCell.m; sourceTree = "<group>"; };
 		7D96CF051F711D40005B2116 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		7D96CF061F711D40005B2116 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
+		7DB988C91F7B5786009DBC8A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7DB988CA1F7B5786009DBC8A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7DB988CC1F7C9276009DBC8A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		7DB988CD1F7C9276009DBC8A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		997BFD3456C937E83139F4BF /* Pods-CityParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityParking/Pods-CityParking.release.xcconfig"; sourceTree = "<group>"; };
 		BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityParking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -298,6 +298,8 @@
 		7D5F54A51F6F91C300DC3E2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7DB988CD1F7C9276009DBC8A /* UserInfo.h */,
+				7DB988CC1F7C9276009DBC8A /* UserInfo.m */,
 				7D5F54C61F70C99100DC3E2F /* MarkModel.h */,
 				7D5F54C71F70C99100DC3E2F /* MarkModel.m */,
 			);
@@ -338,10 +340,8 @@
 				7D5F54B31F6F9C0000DC3E2F /* GuideViewController.m */,
 				7D5F54B41F6F9C0000DC3E2F /* MainViewController.h */,
 				7D5F54B51F6F9C0000DC3E2F /* MainViewController.m */,
-				7D3685A11F73B3F8009A8A56 /* SecondViewController.h */,
-				7D3685A01F73B3F8009A8A56 /* SecondViewController.m */,
-				7D36859D1F73AE1A009A8A56 /* MapViewController.h */,
-				7D36859E1F73AE1A009A8A56 /* MapViewController.m */,
+				7DB988C91F7B5786009DBC8A /* LoginViewController.h */,
+				7DB988CA1F7B5786009DBC8A /* LoginViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -547,14 +547,14 @@
 				7D5F548D1F6F912100DC3E2F /* main.m in Sources */,
 				7D5F54BE1F6FA52700DC3E2F /* MenuCell.m in Sources */,
 				7D5F54B91F6F9C0000DC3E2F /* GuideViewController.m in Sources */,
+				7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */,
 				7D5F54CC1F710CF700DC3E2F /* mapSearchCell.m in Sources */,
-				7D36859F1F73AE1A009A8A56 /* MapViewController.m in Sources */,
 				7D5F54C11F6FCE0E00DC3E2F /* MarkCollectionViewCell.m in Sources */,
 				7D5F54BA1F6F9C0000DC3E2F /* MainViewController.m in Sources */,
-				7D3685A21F73B3F8009A8A56 /* SecondViewController.m in Sources */,
 				7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */,
 				7D5F54BB1F6F9C0000DC3E2F /* MenuViewController.m in Sources */,
 				7D5F54C91F70C99100DC3E2F /* MarkModel.m in Sources */,
+				7DB988CB1F7B5786009DBC8A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
