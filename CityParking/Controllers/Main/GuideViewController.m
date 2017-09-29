@@ -38,8 +38,8 @@
 
 - (void)initDrawerRootViewController {
     //1、初始化控制器
-    UIViewController *centerVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-//    UIViewController *centerVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//    UIViewController *centerVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    UIViewController *centerVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     UIViewController *leftVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
     
     //3、使用MMDrawerController

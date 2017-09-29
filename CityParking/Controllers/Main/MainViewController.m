@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shadowToBottomDistance;
 @property (weak, nonatomic) IBOutlet UICollectionView *collection;
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
+@property (weak, nonatomic) IBOutlet UIButton *menuBtn;
 
 
 @end
@@ -107,24 +108,28 @@
         }
             break;
         case 3:{
-            [self GetMapDataWithType:@"LTK"];
+            [self GetMapDataWithType:@"SZZC"];
         }
             break;
         case 4:{
-            [self GetMapDataWithType:@"MX"];
+            [self GetMapDataWithType:@"LTK"];
         }
             break;
         case 5:{
-            [dataArr removeAllObjects];
-            [self getBusPOIInfo];
+            [self GetMapDataWithType:@"MX"];
         }
             break;
         case 6:{
             [dataArr removeAllObjects];
-            [self getTrainPOIInfo];
+            [self getBusPOIInfo];
         }
             break;
         case 7:{
+            [dataArr removeAllObjects];
+            [self getTrainPOIInfo];
+        }
+            break;
+        case 8:{
             [dataArr removeAllObjects];
             [self getTaxiPOIInfo];
         }
@@ -153,14 +158,14 @@
                 }else {
                     [dataArr addObject:model];
                 }
-                if (showParkTable) {
-                    [tableData addObject:model];
-                    if (tableData.count) {
-                        CGRect tempRect = _headerView.frame;
-                        tempRect.size.height = 0;
-                        _headerView.frame = tempRect;
-                        [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
-                    }
+                [tableData addObject:model];
+            }
+            if (showParkTable) {
+                if (tableData.count) {
+                    CGRect tempRect = _headerView.frame;
+                    tempRect.size.height = 0;
+                    _headerView.frame = tempRect;
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
                 }
             }
             [self addAnnotationToMapWithData:dataArr];
@@ -346,7 +351,7 @@
     [tableData removeAllObjects];
     showParkTable = NO;
     CGRect tempRect = _headerView.frame;
-    tempRect.size.height = CollectionHeight;
+    tempRect.size.height = CollectionHeight+20;
     _headerView.frame = tempRect;
     [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
 //    [_table reloadData];
@@ -366,12 +371,12 @@
     _tableViewHeight.constant = SCREEN_HEIGHT - 50;
     _shadowToBottomDistance.constant = -(SCREEN_HEIGHT - CollectionHeight - 50 - 20);
     CGRect tempRect = _headerView.frame;
-    tempRect.size.height = CollectionHeight;
+    tempRect.size.height = CollectionHeight+20;
     _headerView.frame = tempRect;
     _table.tableHeaderView = _headerView;
     
-    titleArr = @[@"全部",@"停车",@"神州租车",@"立体",@"慢行",@"巴士",@"地铁",@"出租车"];
-    imageNameArr = @[@"markAll",@"markPark",@"markRent",@"markBuilding",@"markBike",@"markBus",@"markTrain",@"markTaxi"];
+    titleArr = @[@"全部",@"停车",@"共享车位",@"神州租车",@"立体",@"慢行",@"巴士",@"地铁",@"出租车"];
+    imageNameArr = @[@"markAll",@"markPark",@"markShare",@"markRent",@"markBuilding",@"markBike",@"markBus",@"markTrain",@"markTaxi"];
     tableImageArr = @[@"markHome",@"markCompany"];
     tableTitleArr = @[@"带我回家",@"带我上班"];
     
@@ -407,7 +412,7 @@
     _mapView.showMapScaleBar = YES;
     _mapView.zoomLevel = 17;
     _mapView.isSelectedAnnotationViewFront = YES;
-    [_mapView showMapPoi];
+//    [_mapView showMapPoi];
 }
 
 
@@ -586,7 +591,7 @@
 //item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
     
 }
 
@@ -598,13 +603,13 @@
     cell.textLabel.text = titleArr[indexPath.item];
     NSString *imageName = imageNameArr[indexPath.item];
     cell.imageView.image = [UIImage imageNamed:imageName];
-    if (indexPath.item == 3 || indexPath.item ==7) {
+    if (indexPath.item == 4) {
         cell.verticalLine.hidden = YES;
     } else {
         cell.verticalLine.hidden = NO;
     }
     
-    if (indexPath.item == 4 || indexPath.item ==5 || indexPath.item == 6 || indexPath.item ==7) {
+    if (indexPath.item == 5 || indexPath.item == 6 || indexPath.item ==7 || indexPath.item ==8) {
         cell.horizontalLine.hidden = YES;
     } else {
         cell.horizontalLine.hidden = NO;
@@ -618,7 +623,7 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = (SCREEN_WIDTH-40)/4;
+    CGFloat width = (SCREEN_WIDTH-20)/5;
     return CGSizeMake(width, width);
 }
 
@@ -794,5 +799,6 @@
         }
     }
 }
+
 
 @end

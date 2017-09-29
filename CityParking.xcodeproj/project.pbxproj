@@ -74,6 +74,14 @@
 		7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D96CF061F711D40005B2116 /* NetworkTool.m */; };
 		7DB988CB1F7B5786009DBC8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CA1F7B5786009DBC8A /* LoginViewController.m */; };
 		7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CC1F7C9276009DBC8A /* UserInfo.m */; };
+		7DB988D71F7DE822009DBC8A /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB988DB1F7DE822009DBC8A /* libAFNetworking.a */; };
+		7DB988D81F7DE822009DBC8A /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB988DC1F7DE822009DBC8A /* libMBProgressHUD.a */; };
+		7DB988D91F7DE822009DBC8A /* libRKDropdownAlert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB988DD1F7DE822009DBC8A /* libRKDropdownAlert.a */; };
+		7DB988DA1F7DE822009DBC8A /* libTYAlertController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB988DE1F7DE822009DBC8A /* libTYAlertController.a */; };
+		7DB988E11F7E1BDF009DBC8A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988DF1F7E1BDE009DBC8A /* SecondViewController.m */; };
+		7DB988E41F7E1BFE009DBC8A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988E31F7E1BFE009DBC8A /* MapViewController.m */; };
+		7DB988E81F7E2F19009DBC8A /* MarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988E61F7E2F19009DBC8A /* MarkCell.m */; };
+		7DB988E91F7E2F19009DBC8A /* MarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DB988E71F7E2F19009DBC8A /* MarkCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +168,17 @@
 		7DB988CA1F7B5786009DBC8A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7DB988CC1F7C9276009DBC8A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		7DB988CD1F7C9276009DBC8A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		7DB988DB1F7DE822009DBC8A /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB988DC1F7DE822009DBC8A /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB988DD1F7DE822009DBC8A /* libRKDropdownAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRKDropdownAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB988DE1F7DE822009DBC8A /* libTYAlertController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTYAlertController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB988DF1F7E1BDE009DBC8A /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7DB988E01F7E1BDF009DBC8A /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		7DB988E21F7E1BFE009DBC8A /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		7DB988E31F7E1BFE009DBC8A /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		7DB988E51F7E2F19009DBC8A /* MarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkCell.h; sourceTree = "<group>"; };
+		7DB988E61F7E2F19009DBC8A /* MarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarkCell.m; sourceTree = "<group>"; };
+		7DB988E71F7E2F19009DBC8A /* MarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkCell.xib; sourceTree = "<group>"; };
 		997BFD3456C937E83139F4BF /* Pods-CityParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityParking/Pods-CityParking.release.xcconfig"; sourceTree = "<group>"; };
 		BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityParking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -169,6 +188,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DB988D71F7DE822009DBC8A /* libAFNetworking.a in Frameworks */,
+				7DB988D81F7DE822009DBC8A /* libMBProgressHUD.a in Frameworks */,
+				7DB988D91F7DE822009DBC8A /* libRKDropdownAlert.a in Frameworks */,
+				7DB988DA1F7DE822009DBC8A /* libTYAlertController.a in Frameworks */,
 				7D5F54C31F6FEE3000DC3E2F /* libMMDrawerController.a in Frameworks */,
 				3CAC31980FEBF0636D457095 /* libPods-CityParking.a in Frameworks */,
 			);
@@ -323,6 +346,9 @@
 				7D5F54BD1F6FA52700DC3E2F /* MenuCell.m */,
 				7D5F54BF1F6FCE0E00DC3E2F /* MarkCollectionViewCell.h */,
 				7D5F54C01F6FCE0E00DC3E2F /* MarkCollectionViewCell.m */,
+				7DB988E51F7E2F19009DBC8A /* MarkCell.h */,
+				7DB988E61F7E2F19009DBC8A /* MarkCell.m */,
+				7DB988E71F7E2F19009DBC8A /* MarkCell.xib */,
 				7D5F54CA1F710CF700DC3E2F /* mapSearchCell.h */,
 				7D5F54CB1F710CF700DC3E2F /* mapSearchCell.m */,
 				7D5F54CD1F710D0700DC3E2F /* mapEditCell.h */,
@@ -342,6 +368,10 @@
 				7D5F54B51F6F9C0000DC3E2F /* MainViewController.m */,
 				7DB988C91F7B5786009DBC8A /* LoginViewController.h */,
 				7DB988CA1F7B5786009DBC8A /* LoginViewController.m */,
+				7DB988E21F7E1BFE009DBC8A /* MapViewController.h */,
+				7DB988E31F7E1BFE009DBC8A /* MapViewController.m */,
+				7DB988E01F7E1BDF009DBC8A /* SecondViewController.h */,
+				7DB988DF1F7E1BDE009DBC8A /* SecondViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -358,6 +388,10 @@
 		DA8CE8950476F7D0B901F0D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DB988DB1F7DE822009DBC8A /* libAFNetworking.a */,
+				7DB988DC1F7DE822009DBC8A /* libMBProgressHUD.a */,
+				7DB988DD1F7DE822009DBC8A /* libRKDropdownAlert.a */,
+				7DB988DE1F7DE822009DBC8A /* libTYAlertController.a */,
 				7D5F54C21F6FEE3000DC3E2F /* libMMDrawerController.a */,
 				BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */,
 			);
@@ -470,6 +504,7 @@
 				7D1E1C4E1F7266C300FEF451 /* 5.jpg in Resources */,
 				7D1E1C441F7266C300FEF451 /* 4.jpg in Resources */,
 				7D1E1C2E1F7266C300FEF451 /* 2.jpg in Resources */,
+				7DB988E91F7E2F19009DBC8A /* MarkCell.xib in Resources */,
 				7D1E1C411F7266C300FEF451 /* 37.jpg in Resources */,
 				7D1E1C4F1F7266C300FEF451 /* 6.jpg in Resources */,
 				7D1E1C471F7266C300FEF451 /* 42.jpg in Resources */,
@@ -541,16 +576,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DB988E11F7E1BDF009DBC8A /* SecondViewController.m in Sources */,
 				7D1E1BF11F7250CE00FEF451 /* MapParkCell.m in Sources */,
 				7D5F54901F6F912100DC3E2F /* AppDelegate.m in Sources */,
 				7D5F54CF1F710D0700DC3E2F /* mapEditCell.m in Sources */,
 				7D5F548D1F6F912100DC3E2F /* main.m in Sources */,
 				7D5F54BE1F6FA52700DC3E2F /* MenuCell.m in Sources */,
+				7DB988E81F7E2F19009DBC8A /* MarkCell.m in Sources */,
 				7D5F54B91F6F9C0000DC3E2F /* GuideViewController.m in Sources */,
 				7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */,
 				7D5F54CC1F710CF700DC3E2F /* mapSearchCell.m in Sources */,
 				7D5F54C11F6FCE0E00DC3E2F /* MarkCollectionViewCell.m in Sources */,
 				7D5F54BA1F6F9C0000DC3E2F /* MainViewController.m in Sources */,
+				7DB988E41F7E1BFE009DBC8A /* MapViewController.m in Sources */,
 				7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */,
 				7D5F54BB1F6F9C0000DC3E2F /* MenuViewController.m in Sources */,
 				7D5F54C91F70C99100DC3E2F /* MarkModel.m in Sources */,

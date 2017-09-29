@@ -14,12 +14,15 @@
 #import "UIViewController+MMDrawerController.h"
 #import "NetworkTool.h"
 #import "LoginViewController.h"
+#import "SecondViewController.h"
+#import "MapViewController.h"
 
 #import "MenuCell.h"
 #import "MarkCollectionViewCell.h"
 #import "mapEditCell.h"
 #import "MapParkCell.h"
 #import "mapSearchCell.h"
+#import "MarkCell.h"
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 #import "AppDelegate.h"
@@ -28,8 +31,8 @@
 #import <BaiduMapKit/BaiduMapAPI_Location/BMKLocationService.h>
 #import <BaiduMapKit/BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
-#import "RKDropdownAlert.h"
-#import "TYAlertController.h"
+#import <RKDropdownAlert/RKDropdownAlert.h>
+#import <TYAlertController/TYAlertController.h>
 
 #import "MarkModel.h"
 #import "UserInfo.h"
@@ -44,8 +47,9 @@
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-#define CollectionHeight SCREEN_WIDTH/2+10
+#define CollectionHeight ((SCREEN_WIDTH-20)/5)*2
 #define Y1               50
+#define Y2               self.view.frame.size.height - 250
 #define Y3               SCREEN_HEIGHT - CollectionHeight - 20
 
 #define UIColorFromHex(s) [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0green:(((s &0xFF00) >>8))/255.0blue:((s &0xFF))/255.0alpha:1.0]
