@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-static NSString * const MarkCellIdentifier = @"MarkCellIdentifier";
 @interface MarkCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;

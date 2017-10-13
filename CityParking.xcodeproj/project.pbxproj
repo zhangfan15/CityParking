@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3CAC31980FEBF0636D457095 /* libPods-CityParking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */; };
+		7D078A661F8EFA740019CFDA /* MapEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D078A641F8EFA740019CFDA /* MapEditCell.m */; };
+		7D078A671F8EFA740019CFDA /* MapEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D078A651F8EFA740019CFDA /* MapEditCell.xib */; };
+		7D078A6B1F8F5A270019CFDA /* MapAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D078A691F8F5A270019CFDA /* MapAddCell.m */; };
+		7D078A6C1F8F5A270019CFDA /* MapAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D078A6A1F8F5A270019CFDA /* MapAddCell.xib */; };
+		7D078A701F8F5DCB0019CFDA /* SectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D078A6E1F8F5DCB0019CFDA /* SectionTitleCell.m */; };
+		7D078A711F8F5DCB0019CFDA /* SectionTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D078A6F1F8F5DCB0019CFDA /* SectionTitleCell.xib */; };
+		7D078A751F904D1A0019CFDA /* BusLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D078A731F904D1A0019CFDA /* BusLineCell.m */; };
+		7D078A761F904D1A0019CFDA /* BusLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D078A741F904D1A0019CFDA /* BusLineCell.xib */; };
+		7D078A7E1F90A6D60019CFDA /* MapParkDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D078A7C1F90A6D60019CFDA /* MapParkDataCell.m */; };
+		7D078A7F1F90A6D60019CFDA /* MapParkDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D078A7D1F90A6D60019CFDA /* MapParkDataCell.xib */; };
 		7D1E1BF11F7250CE00FEF451 /* MapParkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1E1BF01F7250CE00FEF451 /* MapParkCell.m */; };
 		7D1E1C231F7266C200FEF451 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E1BF31F7266C200FEF451 /* 1.jpg */; };
 		7D1E1C241F7266C200FEF451 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E1BF41F7266C200FEF451 /* 10.jpg */; };
@@ -69,8 +79,6 @@
 		7D5F54C11F6FCE0E00DC3E2F /* MarkCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54C01F6FCE0E00DC3E2F /* MarkCollectionViewCell.m */; };
 		7D5F54C31F6FEE3000DC3E2F /* libMMDrawerController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5F54C21F6FEE3000DC3E2F /* libMMDrawerController.a */; };
 		7D5F54C91F70C99100DC3E2F /* MarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54C71F70C99100DC3E2F /* MarkModel.m */; };
-		7D5F54CC1F710CF700DC3E2F /* mapSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54CB1F710CF700DC3E2F /* mapSearchCell.m */; };
-		7D5F54CF1F710D0700DC3E2F /* mapEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5F54CE1F710D0700DC3E2F /* mapEditCell.m */; };
 		7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D96CF061F711D40005B2116 /* NetworkTool.m */; };
 		7DB988CB1F7B5786009DBC8A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CA1F7B5786009DBC8A /* LoginViewController.m */; };
 		7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988CC1F7C9276009DBC8A /* UserInfo.m */; };
@@ -82,10 +90,27 @@
 		7DB988E41F7E1BFE009DBC8A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988E31F7E1BFE009DBC8A /* MapViewController.m */; };
 		7DB988E81F7E2F19009DBC8A /* MarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988E61F7E2F19009DBC8A /* MarkCell.m */; };
 		7DB988E91F7E2F19009DBC8A /* MarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DB988E71F7E2F19009DBC8A /* MarkCell.xib */; };
+		7DB988ED1F7E45DE009DBC8A /* MapSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB988EB1F7E45DE009DBC8A /* MapSearchCell.m */; };
+		7DB988EE1F7E45DE009DBC8A /* MapSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DB988EC1F7E45DE009DBC8A /* MapSearchCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17DE651CEBB7396B7C4B7DFB /* Pods-CityParking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityParking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityParking/Pods-CityParking.debug.xcconfig"; sourceTree = "<group>"; };
+		7D078A631F8EFA740019CFDA /* MapEditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapEditCell.h; sourceTree = "<group>"; };
+		7D078A641F8EFA740019CFDA /* MapEditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapEditCell.m; sourceTree = "<group>"; };
+		7D078A651F8EFA740019CFDA /* MapEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapEditCell.xib; sourceTree = "<group>"; };
+		7D078A681F8F5A270019CFDA /* MapAddCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapAddCell.h; sourceTree = "<group>"; };
+		7D078A691F8F5A270019CFDA /* MapAddCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapAddCell.m; sourceTree = "<group>"; };
+		7D078A6A1F8F5A270019CFDA /* MapAddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapAddCell.xib; sourceTree = "<group>"; };
+		7D078A6D1F8F5DCB0019CFDA /* SectionTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SectionTitleCell.h; sourceTree = "<group>"; };
+		7D078A6E1F8F5DCB0019CFDA /* SectionTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SectionTitleCell.m; sourceTree = "<group>"; };
+		7D078A6F1F8F5DCB0019CFDA /* SectionTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionTitleCell.xib; sourceTree = "<group>"; };
+		7D078A721F904D1A0019CFDA /* BusLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusLineCell.h; sourceTree = "<group>"; };
+		7D078A731F904D1A0019CFDA /* BusLineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusLineCell.m; sourceTree = "<group>"; };
+		7D078A741F904D1A0019CFDA /* BusLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusLineCell.xib; sourceTree = "<group>"; };
+		7D078A7B1F90A6D60019CFDA /* MapParkDataCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapParkDataCell.h; sourceTree = "<group>"; };
+		7D078A7C1F90A6D60019CFDA /* MapParkDataCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapParkDataCell.m; sourceTree = "<group>"; };
+		7D078A7D1F90A6D60019CFDA /* MapParkDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapParkDataCell.xib; sourceTree = "<group>"; };
 		7D1E1BEF1F7250CE00FEF451 /* MapParkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapParkCell.h; sourceTree = "<group>"; };
 		7D1E1BF01F7250CE00FEF451 /* MapParkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapParkCell.m; sourceTree = "<group>"; };
 		7D1E1BF31F7266C200FEF451 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -158,10 +183,6 @@
 		7D5F54C21F6FEE3000DC3E2F /* libMMDrawerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMMDrawerController.a; path = "../../Library/Developer/Xcode/DerivedData/CityParking-fyruuprlrtwnicbscvvvqrilltwi/Build/Products/Debug-iphonesimulator/MMDrawerController/libMMDrawerController.a"; sourceTree = "<group>"; };
 		7D5F54C61F70C99100DC3E2F /* MarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkModel.h; sourceTree = "<group>"; };
 		7D5F54C71F70C99100DC3E2F /* MarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkModel.m; sourceTree = "<group>"; };
-		7D5F54CA1F710CF700DC3E2F /* mapSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapSearchCell.h; sourceTree = "<group>"; };
-		7D5F54CB1F710CF700DC3E2F /* mapSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapSearchCell.m; sourceTree = "<group>"; };
-		7D5F54CD1F710D0700DC3E2F /* mapEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapEditCell.h; sourceTree = "<group>"; };
-		7D5F54CE1F710D0700DC3E2F /* mapEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapEditCell.m; sourceTree = "<group>"; };
 		7D96CF051F711D40005B2116 /* NetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTool.h; sourceTree = "<group>"; };
 		7D96CF061F711D40005B2116 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		7DB988C91F7B5786009DBC8A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -179,6 +200,9 @@
 		7DB988E51F7E2F19009DBC8A /* MarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkCell.h; sourceTree = "<group>"; };
 		7DB988E61F7E2F19009DBC8A /* MarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarkCell.m; sourceTree = "<group>"; };
 		7DB988E71F7E2F19009DBC8A /* MarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkCell.xib; sourceTree = "<group>"; };
+		7DB988EA1F7E45DE009DBC8A /* MapSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapSearchCell.h; sourceTree = "<group>"; };
+		7DB988EB1F7E45DE009DBC8A /* MapSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapSearchCell.m; sourceTree = "<group>"; };
+		7DB988EC1F7E45DE009DBC8A /* MapSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSearchCell.xib; sourceTree = "<group>"; };
 		997BFD3456C937E83139F4BF /* Pods-CityParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityParking/Pods-CityParking.release.xcconfig"; sourceTree = "<group>"; };
 		BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityParking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -349,12 +373,26 @@
 				7DB988E51F7E2F19009DBC8A /* MarkCell.h */,
 				7DB988E61F7E2F19009DBC8A /* MarkCell.m */,
 				7DB988E71F7E2F19009DBC8A /* MarkCell.xib */,
-				7D5F54CA1F710CF700DC3E2F /* mapSearchCell.h */,
-				7D5F54CB1F710CF700DC3E2F /* mapSearchCell.m */,
-				7D5F54CD1F710D0700DC3E2F /* mapEditCell.h */,
-				7D5F54CE1F710D0700DC3E2F /* mapEditCell.m */,
+				7DB988EA1F7E45DE009DBC8A /* MapSearchCell.h */,
+				7DB988EB1F7E45DE009DBC8A /* MapSearchCell.m */,
+				7DB988EC1F7E45DE009DBC8A /* MapSearchCell.xib */,
+				7D078A631F8EFA740019CFDA /* MapEditCell.h */,
+				7D078A641F8EFA740019CFDA /* MapEditCell.m */,
+				7D078A651F8EFA740019CFDA /* MapEditCell.xib */,
+				7D078A681F8F5A270019CFDA /* MapAddCell.h */,
+				7D078A691F8F5A270019CFDA /* MapAddCell.m */,
+				7D078A6A1F8F5A270019CFDA /* MapAddCell.xib */,
+				7D078A6D1F8F5DCB0019CFDA /* SectionTitleCell.h */,
+				7D078A6E1F8F5DCB0019CFDA /* SectionTitleCell.m */,
+				7D078A6F1F8F5DCB0019CFDA /* SectionTitleCell.xib */,
+				7D078A721F904D1A0019CFDA /* BusLineCell.h */,
+				7D078A731F904D1A0019CFDA /* BusLineCell.m */,
+				7D078A741F904D1A0019CFDA /* BusLineCell.xib */,
 				7D1E1BEF1F7250CE00FEF451 /* MapParkCell.h */,
 				7D1E1BF01F7250CE00FEF451 /* MapParkCell.m */,
+				7D078A7B1F90A6D60019CFDA /* MapParkDataCell.h */,
+				7D078A7C1F90A6D60019CFDA /* MapParkDataCell.m */,
+				7D078A7D1F90A6D60019CFDA /* MapParkDataCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -460,17 +498,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D078A671F8EFA740019CFDA /* MapEditCell.xib in Resources */,
 				7D1E1C4C1F7266C300FEF451 /* 47.jpg in Resources */,
 				7D1E1C461F7266C300FEF451 /* 41.jpg in Resources */,
 				7D1E1C2C1F7266C300FEF451 /* 18.jpg in Resources */,
+				7D078A711F8F5DCB0019CFDA /* SectionTitleCell.xib in Resources */,
 				7D1E1C281F7266C300FEF451 /* 14.jpg in Resources */,
 				7D1E1C241F7266C200FEF451 /* 10.jpg in Resources */,
 				7D1E1C271F7266C300FEF451 /* 13.jpg in Resources */,
+				7D078A7F1F90A6D60019CFDA /* MapParkDataCell.xib in Resources */,
 				7D5F549B1F6F912100DC3E2F /* LaunchScreen.storyboard in Resources */,
 				7D1E1C301F7266C300FEF451 /* 21.jpg in Resources */,
 				7D1E1C3E1F7266C300FEF451 /* 34.jpg in Resources */,
 				7D1E1C341F7266C300FEF451 /* 25.jpg in Resources */,
 				7D1E1C501F7266C300FEF451 /* 7.jpg in Resources */,
+				7D078A6C1F8F5A270019CFDA /* MapAddCell.xib in Resources */,
 				7D1E1C261F7266C300FEF451 /* 12.jpg in Resources */,
 				7D1E1C521F7266C300FEF451 /* 9.jpg in Resources */,
 				7D1E1C451F7266C300FEF451 /* 40.jpg in Resources */,
@@ -486,6 +528,7 @@
 				7D1E1C321F7266C300FEF451 /* 23.jpg in Resources */,
 				7D1E1C2A1F7266C300FEF451 /* 16.jpg in Resources */,
 				7D1E1C3D1F7266C300FEF451 /* 33.jpg in Resources */,
+				7DB988EE1F7E45DE009DBC8A /* MapSearchCell.xib in Resources */,
 				7D1E1C2D1F7266C300FEF451 /* 19.jpg in Resources */,
 				7D1E1C491F7266C300FEF451 /* 44.jpg in Resources */,
 				7D1E1C481F7266C300FEF451 /* 43.jpg in Resources */,
@@ -510,6 +553,7 @@
 				7D1E1C471F7266C300FEF451 /* 42.jpg in Resources */,
 				7D1E1C311F7266C300FEF451 /* 22.jpg in Resources */,
 				7D1E1C3F1F7266C300FEF451 /* 35.jpg in Resources */,
+				7D078A761F904D1A0019CFDA /* BusLineCell.xib in Resources */,
 				7D5F54981F6F912100DC3E2F /* Assets.xcassets in Resources */,
 				7D5F54961F6F912100DC3E2F /* Main.storyboard in Resources */,
 			);
@@ -578,20 +622,24 @@
 			files = (
 				7DB988E11F7E1BDF009DBC8A /* SecondViewController.m in Sources */,
 				7D1E1BF11F7250CE00FEF451 /* MapParkCell.m in Sources */,
+				7D078A701F8F5DCB0019CFDA /* SectionTitleCell.m in Sources */,
 				7D5F54901F6F912100DC3E2F /* AppDelegate.m in Sources */,
-				7D5F54CF1F710D0700DC3E2F /* mapEditCell.m in Sources */,
 				7D5F548D1F6F912100DC3E2F /* main.m in Sources */,
 				7D5F54BE1F6FA52700DC3E2F /* MenuCell.m in Sources */,
 				7DB988E81F7E2F19009DBC8A /* MarkCell.m in Sources */,
+				7DB988ED1F7E45DE009DBC8A /* MapSearchCell.m in Sources */,
 				7D5F54B91F6F9C0000DC3E2F /* GuideViewController.m in Sources */,
+				7D078A7E1F90A6D60019CFDA /* MapParkDataCell.m in Sources */,
 				7DB988CE1F7C9276009DBC8A /* UserInfo.m in Sources */,
-				7D5F54CC1F710CF700DC3E2F /* mapSearchCell.m in Sources */,
+				7D078A661F8EFA740019CFDA /* MapEditCell.m in Sources */,
+				7D078A6B1F8F5A270019CFDA /* MapAddCell.m in Sources */,
 				7D5F54C11F6FCE0E00DC3E2F /* MarkCollectionViewCell.m in Sources */,
 				7D5F54BA1F6F9C0000DC3E2F /* MainViewController.m in Sources */,
 				7DB988E41F7E1BFE009DBC8A /* MapViewController.m in Sources */,
 				7D96CF071F711D40005B2116 /* NetworkTool.m in Sources */,
 				7D5F54BB1F6F9C0000DC3E2F /* MenuViewController.m in Sources */,
 				7D5F54C91F70C99100DC3E2F /* MarkModel.m in Sources */,
+				7D078A751F904D1A0019CFDA /* BusLineCell.m in Sources */,
 				7DB988CB1F7B5786009DBC8A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

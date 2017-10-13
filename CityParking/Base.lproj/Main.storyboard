@@ -147,26 +147,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2D8-LU-idr" customClass="BMKMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="568" id="QgY-qo-IZi"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euS-4o-LaF">
-                                <rect key="frame" x="276" y="330" width="34" height="34"/>
+                                <rect key="frame" x="276" y="310" width="34" height="34"/>
                                 <state key="normal" image="location"/>
                                 <connections>
                                     <action selector="startLocation:" destination="ghJ-Dp-Ik8" eventType="touchUpInside" id="NQe-h0-I3e"/>
+                                    <action selector="startLocation:" destination="EGN-BO-1Ol" eventType="touchUpInside" id="oDn-hm-hER"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOg-n3-FE0">
-                                <rect key="frame" x="276" y="372" width="34" height="35"/>
+                                <rect key="frame" x="276" y="352" width="34" height="35"/>
                                 <state key="normal" image="markPlus"/>
                                 <connections>
+                                    <action selector="bigButtonClick:" destination="EGN-BO-1Ol" eventType="touchUpInside" id="SPJ-R1-QDM"/>
                                     <action selector="plusMapButtonClick:" destination="ghJ-Dp-Ik8" eventType="touchUpInside" id="gqc-Ih-dBU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ji8-lz-Imv">
-                                <rect key="frame" x="276" y="407" width="34" height="31"/>
+                                <rect key="frame" x="276" y="387" width="34" height="31"/>
                                 <state key="normal" image="markCut"/>
                                 <connections>
                                     <action selector="cutMapButtonClick:" destination="ghJ-Dp-Ik8" eventType="touchUpInside" id="uZ2-7W-YUl"/>
+                                    <action selector="smallButtonClick:" destination="EGN-BO-1Ol" eventType="touchUpInside" id="6Ih-6O-AeF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6K1-4y-I5U">
@@ -178,34 +184,41 @@
                                 <state key="normal" image="menu"/>
                                 <connections>
                                     <action selector="leftButtonClick:" destination="ghJ-Dp-Ik8" eventType="touchUpInside" id="22f-Bx-JeH"/>
+                                    <action selector="leftButtonClick:" destination="EGN-BO-1Ol" eventType="touchUpInside" id="X18-vw-wLe"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rOg-n3-FE0" firstAttribute="top" secondItem="euS-4o-LaF" secondAttribute="bottom" constant="8" id="1d8-eW-iPc"/>
-                            <constraint firstItem="USz-un-nwO" firstAttribute="top" secondItem="Ji8-lz-Imv" secondAttribute="bottom" constant="130" id="3jT-vq-UGf"/>
+                            <constraint firstItem="USz-un-nwO" firstAttribute="top" secondItem="Ji8-lz-Imv" secondAttribute="bottom" constant="150" id="3jT-vq-UGf"/>
                             <constraint firstItem="Ji8-lz-Imv" firstAttribute="top" secondItem="rOg-n3-FE0" secondAttribute="bottom" id="9RN-0n-iFJ"/>
                             <constraint firstItem="6K1-4y-I5U" firstAttribute="leading" secondItem="XfD-Za-MQC" secondAttribute="leading" constant="10" id="DFF-uy-8E2"/>
                             <constraint firstItem="Ji8-lz-Imv" firstAttribute="trailing" secondItem="euS-4o-LaF" secondAttribute="trailing" id="DSf-8E-L3d"/>
                             <constraint firstItem="rOg-n3-FE0" firstAttribute="trailing" secondItem="euS-4o-LaF" secondAttribute="trailing" id="DSp-Ys-Jma"/>
                             <constraint firstItem="2D8-LU-idr" firstAttribute="leading" secondItem="XfD-Za-MQC" secondAttribute="leading" id="JS5-4l-ePK"/>
-                            <constraint firstItem="USz-un-nwO" firstAttribute="top" secondItem="2D8-LU-idr" secondAttribute="bottom" id="Na8-rn-YgD"/>
                             <constraint firstItem="2D8-LU-idr" firstAttribute="top" secondItem="XfD-Za-MQC" secondAttribute="top" id="Qif-SC-qFa"/>
                             <constraint firstAttribute="trailing" secondItem="2D8-LU-idr" secondAttribute="trailing" id="aFE-l4-NC8"/>
                             <constraint firstItem="6K1-4y-I5U" firstAttribute="top" secondItem="XfD-Za-MQC" secondAttribute="topMargin" id="dsz-A4-DdZ"/>
                             <constraint firstAttribute="trailing" secondItem="Ji8-lz-Imv" secondAttribute="trailing" constant="10" id="ogF-at-ICd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnToBottomDistance" destination="3jT-vq-UGf" id="6US-dl-Bg4"/>
+                        <outlet property="mapView" destination="2D8-LU-idr" id="jK7-eo-dBh"/>
+                        <outlet property="mapViewHeight" destination="QgY-qo-IZi" id="lbU-4x-ePi"/>
+                        <outlet property="menuBtn" destination="6K1-4y-I5U" id="IxN-jh-H0Q"/>
+                        <outlet property="startBtn" destination="euS-4o-LaF" id="BPG-6R-k09"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cl3-el-3An" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-759" y="1469"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="xKJ-hj-ohP">
             <objects>
-                <viewController id="U8v-JW-aJH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U8v-JW-aJH" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XYa-xS-O53"/>
                         <viewControllerLayoutGuide type="bottom" id="tMf-Ui-nuz"/>
@@ -294,6 +307,10 @@
                                             <integer key="value" value="5"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="dataSource" destination="U8v-JW-aJH" id="axr-E3-nhy"/>
+                                        <outlet property="delegate" destination="U8v-JW-aJH" id="9eT-0Y-M9H"/>
+                                    </connections>
                                 </collectionView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LXMapSearchCell" id="GRv-sS-S9F" customClass="mapSearchCell">
@@ -496,9 +513,13 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="U8v-JW-aJH" id="zeZ-3T-XIz"/>
+                                    <outlet property="delegate" destination="U8v-JW-aJH" id="Yni-a9-stR"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.29411764709999999" green="0.44705882349999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="j7I-R1-eal" firstAttribute="top" secondItem="vLZ-wj-ck5" secondAttribute="top" constant="50" id="8Jk-MZ-2TD"/>
                             <constraint firstItem="tMf-Ui-nuz" firstAttribute="top" secondItem="j7I-R1-eal" secondAttribute="bottom" id="9vd-4T-4mq"/>
@@ -506,6 +527,10 @@
                             <constraint firstItem="j7I-R1-eal" firstAttribute="leading" secondItem="vLZ-wj-ck5" secondAttribute="leading" id="mB1-fu-63U"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="Y7M-y7-HjW" id="YuE-9J-ChM"/>
+                        <outlet property="table" destination="j7I-R1-eal" id="UoQ-EV-Ekh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbR-ow-y90" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

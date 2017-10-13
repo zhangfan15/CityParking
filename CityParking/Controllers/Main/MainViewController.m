@@ -672,27 +672,37 @@
         return cell;
     }else {
         if (indexPath.row == 0) {
-            NSString *CellIdentifier = @"LXMapSearchCell";
-            mapSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (!cell) {
-                cell = [[mapSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            
-            return cell;
+//            NSString *CellIdentifier = @"LXMapSearchCell";
+//            mapSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            if (!cell) {
+//                cell = [[mapSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            }
+//
+//            return cell;
         } else {
-            NSString * CellIdentifier = @"LXMapEditCell";
-            mapEditCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (!cell) {
-                cell = [[mapEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            NSString * imageName = tableImageArr[indexPath.row-1];
-            cell.image.image = [UIImage imageNamed:imageName];
-            cell.titleLabel.text = tableTitleArr[indexPath.row-1];
-            
-            return cell;
+//            NSString * CellIdentifier = @"LXMapEditCell";
+//            mapEditCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            if (!cell) {
+//                cell = [[mapEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            }
+//            NSString * imageName = tableImageArr[indexPath.row-1];
+//            cell.image.image = [UIImage imageNamed:imageName];
+//            cell.titleLabel.text = tableTitleArr[indexPath.row-1];
+//
+//            return cell;
         }
+//        NSString * CellIdentifier = @"LXMapEditCell";
+//        mapEditCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (!cell) {
+//            cell = [[mapEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//        }
+//        NSString * imageName = tableImageArr[indexPath.row-1];
+//        cell.image.image = [UIImage imageNamed:imageName];
+//        cell.titleLabel.text = tableTitleArr[indexPath.row-1];
+//
+//        return cell;
     }
-    
+        return nil;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

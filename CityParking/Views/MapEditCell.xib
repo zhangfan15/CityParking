@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapEditCell" id="KGk-i7-Jjw" customClass="MapEditCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markHome" translatesAutoresizingMaskIntoConstraints="NO" id="zLO-2g-pNr">
+                        <rect key="frame" x="8" y="16" width="16" height="13"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="带我回家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVr-Bw-icV">
+                        <rect key="frame" x="29" y="15" width="49.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-vq-Jnt">
+                        <rect key="frame" x="282" y="8" width="30" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="设置">
+                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zVr-Bw-icV" firstAttribute="centerY" secondItem="zLO-2g-pNr" secondAttribute="centerY" id="K4E-Ea-h7g"/>
+                    <constraint firstItem="zLO-2g-pNr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LZ0-sM-ZFM"/>
+                    <constraint firstItem="cxQ-vq-Jnt" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Xfd-wy-iyY"/>
+                    <constraint firstItem="zVr-Bw-icV" firstAttribute="leading" secondItem="zLO-2g-pNr" secondAttribute="trailing" constant="5" id="jPd-fJ-r4G"/>
+                    <constraint firstItem="cxQ-vq-Jnt" firstAttribute="centerY" secondItem="zLO-2g-pNr" secondAttribute="centerY" id="jVa-db-WA9"/>
+                    <constraint firstItem="zLO-2g-pNr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rfI-7A-Xnu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="cellButton" destination="cxQ-vq-Jnt" id="39g-O3-1Be"/>
+                <outlet property="cellImage" destination="zLO-2g-pNr" id="rSE-Zn-ZmZ"/>
+                <outlet property="cellTitle" destination="zVr-Bw-icV" id="DC0-Id-VQn"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="markHome" width="16" height="13"/>
+    </resources>
+</document>

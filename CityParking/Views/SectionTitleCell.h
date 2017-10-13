@@ -1,5 +1,5 @@
 //
-//  MapEditCell.h
+//  SectionTitleCell.h
 //  CityParking
 //
 //  Created by ZhangFan on 2017/10/12.
@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapEditCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *cellImage;
+@interface SectionTitleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cellTitle;
 @property (weak, nonatomic) IBOutlet UIButton *cellButton;
 

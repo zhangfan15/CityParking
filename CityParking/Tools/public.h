@@ -19,10 +19,14 @@
 
 #import "MenuCell.h"
 #import "MarkCollectionViewCell.h"
-#import "mapEditCell.h"
+#import "MapEditCell.h"
 #import "MapParkCell.h"
-#import "mapSearchCell.h"
+#import "MapSearchCell.h"
 #import "MarkCell.h"
+#import "MapAddCell.h"
+#import "BusLineCell.h"
+#import "SectionTitleCell.h"
+#import "MapParkDataCell.h"
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 #import "AppDelegate.h"
@@ -40,6 +44,7 @@
 #define BaseURLString @"http://cis.3swest.com/"
 
 #define IS_FIRST_LAUNCH   @"IS_FIRST_LAUNCH"  //记录是否第一次启动程序
+#define GetMapDataSuccessed   @"GetMapDataFromServerSuccessed"
 #define USER_INFORMATION   @"USER_INFORMATION"
 #define MainStoryboard    [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 #define IS_LOGINSUCCESS   @"IS_LOGINSUCCESS"
