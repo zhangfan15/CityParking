@@ -35,7 +35,7 @@
 - (void)getRentOrderList {
     UserInfo * user = UserInformation;
     NSDictionary * params = @{@"hyid":user.hyid,@"pageNo":[NSString stringWithFormat:@"%ld",pageNum],@"pageSize":@"10"};
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/queryZuChe" AndParams:params IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/queryZuChe" AndParams:params IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         NSArray * tempArr = responseObject[@"data"];
         if (tempArr != nil && tempArr.count) {
             for (NSDictionary * dic in tempArr) {

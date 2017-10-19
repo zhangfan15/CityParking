@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "public.h"
 
-@interface ParkingLotViewController : UIViewController
+@class MyParkingModel;
+@interface ParkingLotViewController : UIViewController{
+    MyParkingModel * lotModel;
+}
+
+@property (nonatomic, strong) MyParkingModel * lotModel;
 
 @end

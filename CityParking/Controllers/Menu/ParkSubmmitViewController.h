@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "public.h"
+#import "ParkDetailModel.h"
+#import "MarkModel.h"
 
-@interface ParkSubmmitViewController : UIViewController
+@interface ParkSubmmitViewController : UIViewController {
+    ParkDetailModel * detailmodel;
+    MarkModel       * markModel;
+}
+
+@property (nonatomic, strong) ParkDetailModel * detailmodel;
+@property (nonatomic, strong) MarkModel       * markModel;
 
 @end

@@ -90,4 +90,50 @@
     return 0;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:{
+            switch (indexPath.row) {
+                case 0:{
+                    DetailInfoViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"DetailInfoViewController"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 1:{
+                }
+                    break;
+            }
+        }
+            break;
+        case 1:{
+            switch (indexPath.row) {
+                case 0:{
+                }
+                    break;
+                case 1:{
+                }
+                    break;
+            }
+        }
+            break;
+        case 2:{
+            switch (indexPath.row) {
+                case 0:{
+                }
+                    break;
+                case 1:{
+                }
+                    break;
+                case 2:{
+                }
+                    break;
+            }
+        }
+            break;
+        case 3:{
+        }
+            break;
+    }
+}
+
 @end

@@ -35,7 +35,7 @@
 }
 
 - (void)getParkingDataToRefreshTable {
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/InformationReport/realTimeVehicleState" AndParams:@{@"ckid":@"16121317253526"}  IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/InformationReport/realTimeVehicleState" AndParams:@{@"ckid":@"16121317253526"}  IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         NSArray * arr = responseObject[@"data"];
         if (arr != nil && arr.count) {
             for (NSDictionary * tempDic in arr) {
@@ -115,7 +115,11 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    ParkDetailModel * model = dataArr[indexPath.item];
+    ParkSubmmitViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"ParkSubmmitViewController"];
+    vc.markModel = markModel;
+    vc.detailmodel = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -86,7 +86,7 @@
 }
 
 - (void)deletOrderWithParam:(NSString *)param {
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/updateBooking" AndParams:@{@"accid":param}   IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/updateBooking" AndParams:@{@"accid":param}   IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         
     } Failure:^(NSString *errorInfo) {
         
@@ -115,7 +115,7 @@
         params = @{@"hyid":user.hyid,@"pageNo":[NSString stringWithFormat:@"%ld",pageNum2],@"pageSize":@"10"};
     }
     
-    [[NetworkTool shareNetworkTool] PostDataWithURL:URLStr AndParams:params IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:URLStr AndParams:params IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         if (menuBtnClickIndex == 0 && pageNum == 1) {
             [currentBookingData removeAllObjects];
             [historyBookingData removeAllObjects];

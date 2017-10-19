@@ -195,21 +195,16 @@ static NetworkTool * tool = nil;
     }];
 }
 
--(void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfJSONType:(BOOL)isJSON Success:(void (^)(NSDictionary *))success Failure:(void (^)(NSString *))failure {
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoadingView];
+-(void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfShowHUD:(BOOL)isShowHUD Success:(void (^)(NSDictionary *))success Failure:(void (^)(NSString *))failure {
+    if (isShowHUD) {
+        [(AppDelegate *)[UIApplication sharedApplication].delegate showLoadingView];
+    }
     // 创建请求类
     _sessionManager.requestSerializer.timeoutInterval = 60.0;
-    id param;
-    if (isJSON) {
-        NSData * data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
-        param = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    } else {
-        param = params;
-    }
     
     NSString * httpURL = [NSString stringWithFormat:@"%@%@",BaseURLString,url];
     
-    [_sessionManager POST:httpURL parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+    [_sessionManager POST:httpURL parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // 请求成功

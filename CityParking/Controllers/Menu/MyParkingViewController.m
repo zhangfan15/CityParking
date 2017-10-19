@@ -35,7 +35,7 @@
         [dataArr removeAllObjects];
     }
     UserInfo * user = UserInformation;
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"pc/bind/queryShareData" AndParams:@{@"hyid":user.hyid} IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"pc/bind/queryShareData" AndParams:@{@"hyid":user.hyid} IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         NSArray * arr = responseObject[@"data"];
         if (arr != nil && arr.count) {
             for (NSDictionary * tempDic in arr) {
@@ -100,6 +100,13 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return dataArr.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MyParkingModel * model = dataArr[indexPath.row];
+    ParkingLotViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"ParkingLotViewController"];
+    vc.lotModel = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -182,35 +182,35 @@
 #pragma mark SecondViewControllerDelegate
 -(void)collectionDidSelectWithIndex:(NSInteger)index {
     collectionSelectIndex = index;
-    [self getDataWithCollectSelectIndex:index];
+    [self getDataWithCollectSelectIndex:index ShowHUD:YES];
 }
 
-- (void)getDataWithCollectSelectIndex:(NSInteger)index {
+- (void)getDataWithCollectSelectIndex:(NSInteger)index ShowHUD:(BOOL)showHUD{
     switch (index) {//停车场 PMK、神州租车 SZZC、立体 LTK、慢行 MX
         case 0:{
-            [self GetMapDataWithType:nil];
+            [self GetMapDataWithType:nil ShowHUD:showHUD];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTrainWithNotification) name:@"getTrainWithNotification" object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTaxiWithNotification) name:@"getTaxiWithNotification" object:nil];
         }
             break;
         case 1:{
-            [self GetMapDataWithType:@"PMK"];
+            [self GetMapDataWithType:@"PMK" ShowHUD:showHUD];
         }
             break;
         case 2:{
-            [self GetMapDataWithType:@"SZZC"];
+            [self GetMapDataWithType:@"SZZC" ShowHUD:showHUD];
         }
             break;
         case 3:{
-            [self GetMapDataWithType:@"SZZC"];
+            [self GetMapDataWithType:@"SZZC" ShowHUD:showHUD];
         }
             break;
         case 4:{
-            [self GetMapDataWithType:@"LTK"];
+            [self GetMapDataWithType:@"LTK" ShowHUD:showHUD];
         }
             break;
         case 5:{
-            [self GetMapDataWithType:@"MX"];
+            [self GetMapDataWithType:@"MX" ShowHUD:showHUD];
         }
             break;
         case 6:{
@@ -234,13 +234,13 @@
     }
 }
 
--(void)GetMapDataWithType:(NSString *)type {
+-(void)GetMapDataWithType:(NSString *)type ShowHUD:(BOOL)showHUD{
     [dataArr removeAllObjects];
     NSDictionary * paramas = @{@"lat":[NSString stringWithFormat:@"%f",mapCenter.latitude],
                                @"lng":[NSString stringWithFormat:@"%f",mapCenter.longitude],
                                @"pageNo":@"1",
                                @"pageSize":@"20"};
-    [[NetworkTool shareNetworkTool] GetDataWithURL:@"mobile/ratecod/queryAllParking" AndParams:paramas Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/ratecod/queryAllParking" AndParams:paramas IfShowHUD:showHUD Success:^(NSDictionary *responseObject) {
         NSArray * objectArr = responseObject[@"data"];
         if (objectArr != nil) {
             for (NSDictionary * tempObject in objectArr) {
@@ -392,7 +392,7 @@
         self.vc.showParkTable = NO;
         [self.vc.table reloadData];
         collectionSelectIndex = 0;
-        [self getDataWithCollectSelectIndex:0];
+        [self getDataWithCollectSelectIndex:0 ShowHUD:YES];
         [_menuBtn setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
         [_menuBtn setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateSelected];
     } else {
@@ -479,13 +479,13 @@
     [_locService stopUserLocationService];
     [_startBtn setEnabled:YES];
     [_startBtn setAlpha:1];
-    [self getDataWithCollectSelectIndex:collectionSelectIndex];
+    [self getDataWithCollectSelectIndex:collectionSelectIndex ShowHUD:YES];
 }
 
 -(void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     NSLog(@"regionDidChangeAnimated lat %f,long %f zoomLevel %f",_mapView.centerCoordinate.latitude,_mapView.centerCoordinate.longitude,_mapView.zoomLevel);
     mapCenter = CLLocationCoordinate2DMake(_mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude);
-    [self getDataWithCollectSelectIndex:collectionSelectIndex];
+    [self getDataWithCollectSelectIndex:collectionSelectIndex ShowHUD:NO];
 }
 
 -(void)onGetPoiResult:(BMKPoiSearch *)searcher result:(BMKPoiResult *)poiResult errorCode:(BMKSearchErrorCode)errorCode {

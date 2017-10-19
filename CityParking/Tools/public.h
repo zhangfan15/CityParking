@@ -26,6 +26,8 @@
 #import "MenuViewController.h"
 #import "AddParkingViewController.h"
 #import "ParkingLotViewController.h"
+#import "ParkSubmmitViewController.h"
+#import "DetailInfoViewController.h"
 
 #import "MenuCell.h"
 #import "MarkCollectionViewCell.h"

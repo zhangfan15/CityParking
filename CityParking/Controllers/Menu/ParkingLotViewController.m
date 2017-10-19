@@ -20,9 +20,22 @@
 
 @implementation ParkingLotViewController
 
+@synthesize lotModel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _lotName.text = lotModel.villagename;
+    _lotNumber.text = lotModel.parkingNumber;
+    _lotAddress.text = lotModel.street;
+    _shareTime.text = lotModel.time;
+    if (lotModel.state == 0) {
+        _latStatus.text = @"车位正在审核...";
+    } else if (lotModel.state == 1) {
+        _latStatus.text = @"车位已发布";
+    } else {
+        _latStatus.text = @"车位已退回";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

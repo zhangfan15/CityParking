@@ -39,7 +39,7 @@
     NSDictionary * param = @{@"city":cityStr,
                              @"area":areaStr
                              };
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"/mobile/ratecod/queryCnameList" AndParams:param IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"/mobile/ratecod/queryCnameList" AndParams:param IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         parkArr = responseObject[@"data"];
         [_picker reloadAllComponents];
     } Failure:^(NSString *errorInfo) {
@@ -59,8 +59,8 @@
                              @"phonenum":_phoneNumber.text,
                              @"note":_remark.text
                              };
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"/mobile/ratecod/parkingSharePutIn" AndParams:param IfJSONType:NO Success:^(NSDictionary *responseObject) {
-        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"登录成功" message:@""];
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"/mobile/ratecod/parkingSharePutIn" AndParams:param IfShowHUD:YES Success:^(NSDictionary *responseObject) {
+        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"添加成功" message:@""];
         [alertView addAction:[TYAlertAction actionWithTitle:@"确定" style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
             [self.navigationController popViewControllerAnimated:YES];
         }]];

@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyParkingViewController : UIViewController {
-    MyParkingModel * model;
-}
-
-@property (nonatomic, strong) MyParkingModel * model;
+@interface MyParkingViewController : UIViewController
 
 @end

@@ -120,6 +120,10 @@
 		7DE693C31F9729C000B463B2 /* ParkSubmmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE693C21F9729C000B463B2 /* ParkSubmmitViewController.m */; };
 		7DE693C61F97392A00B463B2 /* AddParkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE693C51F97392A00B463B2 /* AddParkingViewController.m */; };
 		7DE693C91F98458A00B463B2 /* ParkingLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE693C81F98458A00B463B2 /* ParkingLotViewController.m */; };
+		7DE693CA1F984A1500B463B2 /* libActionSheetPicker-3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE693CD1F984A1500B463B2 /* libActionSheetPicker-3.0.a */; };
+		7DE693CB1F984A1500B463B2 /* libMJExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE693CE1F984A1500B463B2 /* libMJExtension.a */; };
+		7DE693CC1F984A1500B463B2 /* libMJRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE693CF1F984A1500B463B2 /* libMJRefresh.a */; };
+		7DE693D21F98A26600B463B2 /* DetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE693D11F98A26600B463B2 /* DetailInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -284,6 +288,11 @@
 		7DE693C51F97392A00B463B2 /* AddParkingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddParkingViewController.m; sourceTree = "<group>"; };
 		7DE693C71F98458A00B463B2 /* ParkingLotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotViewController.h; sourceTree = "<group>"; };
 		7DE693C81F98458A00B463B2 /* ParkingLotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkingLotViewController.m; sourceTree = "<group>"; };
+		7DE693CD1F984A1500B463B2 /* libActionSheetPicker-3.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libActionSheetPicker-3.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE693CE1F984A1500B463B2 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE693CF1F984A1500B463B2 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE693D01F98A26600B463B2 /* DetailInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailInfoViewController.h; sourceTree = "<group>"; };
+		7DE693D11F98A26600B463B2 /* DetailInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailInfoViewController.m; sourceTree = "<group>"; };
 		997BFD3456C937E83139F4BF /* Pods-CityParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityParking/Pods-CityParking.release.xcconfig"; sourceTree = "<group>"; };
 		BD81B42A6514BAD73F114A54 /* libPods-CityParking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityParking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,6 +302,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE693CA1F984A1500B463B2 /* libActionSheetPicker-3.0.a in Frameworks */,
+				7DE693CB1F984A1500B463B2 /* libMJExtension.a in Frameworks */,
+				7DE693CC1F984A1500B463B2 /* libMJRefresh.a in Frameworks */,
 				7D3020071F9481B0003182BE /* MapKit.framework in Frameworks */,
 				7DB988D71F7DE822009DBC8A /* libAFNetworking.a in Frameworks */,
 				7DB988D81F7DE822009DBC8A /* libMBProgressHUD.a in Frameworks */,
@@ -535,6 +547,8 @@
 				7D3020041F945370003182BE /* OrderDetailViewController.m */,
 				7D3020081F949509003182BE /* MyInformationViewController.h */,
 				7D3020091F949509003182BE /* MyInformationViewController.m */,
+				7DE693D01F98A26600B463B2 /* DetailInfoViewController.h */,
+				7DE693D11F98A26600B463B2 /* DetailInfoViewController.m */,
 				7D30200B1F94ADB9003182BE /* FindCarViewController.h */,
 				7D30200C1F94ADB9003182BE /* FindCarViewController.m */,
 				7D3020111F94CF28003182BE /* ParkingDetailViewController.h */,
@@ -568,6 +582,9 @@
 		DA8CE8950476F7D0B901F0D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DE693CD1F984A1500B463B2 /* libActionSheetPicker-3.0.a */,
+				7DE693CE1F984A1500B463B2 /* libMJExtension.a */,
+				7DE693CF1F984A1500B463B2 /* libMJRefresh.a */,
 				7D3020061F9481B0003182BE /* MapKit.framework */,
 				7DB988DB1F7DE822009DBC8A /* libAFNetworking.a */,
 				7DB988DC1F7DE822009DBC8A /* libMBProgressHUD.a */,
@@ -804,6 +821,7 @@
 				7D3020051F945370003182BE /* OrderDetailViewController.m in Sources */,
 				7D5F54BB1F6F9C0000DC3E2F /* MenuViewController.m in Sources */,
 				7D5F54C91F70C99100DC3E2F /* MarkModel.m in Sources */,
+				7DE693D21F98A26600B463B2 /* DetailInfoViewController.m in Sources */,
 				7D301FF31F91B51E003182BE /* OrderCenterViewController.m in Sources */,
 				7D078A751F904D1A0019CFDA /* BusLineCell.m in Sources */,
 				7D301FFF1F9446FD003182BE /* ShareOrderCell.m in Sources */,

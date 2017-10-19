@@ -47,6 +47,6 @@
  @param success 返回成功获取的数据
  @param failure 返回失败日志
  */
-- (void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfJSONType:(BOOL)isJSON Success:(void(^)(NSDictionary * responseObject))success Failure:(void(^)(NSString *errorInfo))failure;
+- (void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfShowHUD:(BOOL)isShowHUD Success:(void(^)(NSDictionary * responseObject))success Failure:(void(^)(NSString *errorInfo))failure;
 
 @end

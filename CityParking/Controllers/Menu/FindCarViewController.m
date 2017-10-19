@@ -55,7 +55,7 @@
                               @"lng":location[@"lng"],
                               @"pageNo":[NSString stringWithFormat:@"%ld",pageNum],
                               @"pageSize":[NSString stringWithFormat:@"%d",10]};
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/ratecod/findParking" AndParams:params  IfJSONType:NO Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/ratecod/findParking" AndParams:params  IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         if (pageNum == 1 && tableDataArr.count) {
             [tableDataArr removeAllObjects];
         }
