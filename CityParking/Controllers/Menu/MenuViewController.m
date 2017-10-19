@@ -24,12 +24,12 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroud"]];
     self.table.backgroundColor = [UIColor clearColor];
-    titleArr = @[@[@"我的钱包",@"订单中心",@"神州租车",@"用户中心"],
-                 @[@"车位查找",@"车位导航",@"共享车位",@"发布车位",@"提交资料"],
-                 @[@"智慧停车场",@"快速支付",@"优惠促销"]];
-    imageArr = @[@[@"menuWallet",@"menuOrder",@"markRent",@"menuUser"],
-                 @[@"menuSearch",@"menuNavigation",@"menuShare",@"menuMyPark",@"menuCommit"],
-                 @[@"menuPark",@"menuPay",@"menuDiscount"]];
+    titleArr = @[@[@"订单中心",@"神州租车",@"用户中心"],
+                 @[@"车位查找",@"共享车位",@"我的车位"],
+                 @[@"快速支付"]];
+    imageArr = @[@[@"menuOrder",@"markRent",@"menuUser"],
+                 @[@"menuSearch",@"menuShare",@"menuMyPark"],
+                 @[@"menuPay"]];
     // Do any additional setup after loading the view.
 }
 
@@ -41,21 +41,11 @@
 
 #pragma mark UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return titleArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 4;
-            break;
-        case 1:
-            return 5;
-            break;
-        default:
-            return 3;
-            break;
-    }
+    return [titleArr[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -66,7 +56,8 @@
     }
     cell.titleLabel.text = titleArr[indexPath.section][indexPath.row];
     NSString * imageName = imageArr[indexPath.section][indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:imageName];
+    cell.cellImage.image = [UIImage imageNamed:imageName];
+    cell.cellSubTitle.hidden = YES;
     return cell;
 }
 
@@ -82,8 +73,7 @@
     return 0.f;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(tintColor)]) {
         
         CGFloat cornerRadius = 10.f;
@@ -145,6 +135,53 @@
         testView.backgroundColor = UIColor.clearColor;
         
         cell.backgroundView = testView;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:{
+            switch (indexPath.row) {
+                case 0:{
+                    UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"OrderCenterViewController"];
+                    [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                }
+                    break;
+                case 1:{
+                    UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"RentOrderListViewController"];
+                    [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                }
+                    break;
+                case 2:{
+                    UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyInformationViewController"];
+                    [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                }
+                    break;
+            }
+        }
+            break;
+        case 1:{
+            switch (indexPath.row) {
+                case 0:{
+                    FindCarViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"FindCarViewController"];
+                    [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                }
+                    break;
+                case 1:{
+                }
+                    break;
+                case 2:{
+                    MyParkingViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyParkingViewController"];
+                    [self.mm_drawerController.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+            }
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
     }
 }
 

@@ -20,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.hud = [[MBProgressHUD alloc]initWithView:self.window];
+    [self.window addSubview:self.hud];
     mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [mapManager start:@"amZSsTZejfWZONISi0HsR9LSRxPgbaUp"  generalDelegate:nil];

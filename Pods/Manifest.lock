@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.2.0)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -16,6 +17,8 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (3.4.0)
   - MBProgressHUD (1.0.0)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
@@ -32,21 +35,27 @@ PODS:
   - TYAlertController (1.1.8)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - AFNetworking (~> 3.0)
   - BaiduMapKit
   - MBProgressHUD (~> 1.0.0)
+  - MJExtension
+  - MJRefresh
   - MMDrawerController (~> 0.5.7)
   - RKDropdownAlert
   - TYAlertController
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BaiduMapKit: 0a5e5e0b1e3fd8dc5aceb40ab9b89e52e1d13df9
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
   TYAlertController: 502d3dbc5d007e68559400b509c736f60ebc2cc1
 
-PODFILE CHECKSUM: ebd7f20e1277d7328c6794fccce13e594b9f94c3
+PODFILE CHECKSUM: d40d2382545be40030c53de96a132235c7a3a6e9
 
 COCOAPODS: 1.3.1

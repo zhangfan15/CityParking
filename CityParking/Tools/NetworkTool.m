@@ -194,4 +194,41 @@ static NetworkTool * tool = nil;
         //        NSLog(@"网络请求失败");
     }];
 }
+
+-(void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfJSONType:(BOOL)isJSON Success:(void (^)(NSDictionary *))success Failure:(void (^)(NSString *))failure {
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoadingView];
+    // 创建请求类
+    _sessionManager.requestSerializer.timeoutInterval = 60.0;
+    id param;
+    if (isJSON) {
+        NSData * data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+        param = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    } else {
+        param = params;
+    }
+    
+    NSString * httpURL = [NSString stringWithFormat:@"%@%@",BaseURLString,url];
+    
+    [_sessionManager POST:httpURL parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功
+        [(AppDelegate *)[UIApplication sharedApplication].delegate hideLoadingView];
+        NSString *  SuccessStatus = responseObject[@"message"];
+        if (responseObject){
+            if ([SuccessStatus isEqualToString:@"success"]){
+                success(responseObject);
+            }else {
+                failure(responseObject[@"message"]);
+            }
+        }else {
+            NSLog(@"网络请求失败");
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        [(AppDelegate *)[UIApplication sharedApplication].delegate hideLoadingView];
+        //        NSLog(@"网络请求失败");
+    }];
+}
+
 @end

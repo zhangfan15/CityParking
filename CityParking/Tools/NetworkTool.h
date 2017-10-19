@@ -39,4 +39,14 @@
  */
 - (void)GetDataWithURL:(NSString *)url AndParams:(NSDictionary *)params Success:(void(^)(NSDictionary * responseObject))success Failure:(void(^)(NSString *errorInfo))failure;
 
+/**
+ 进行post接受网络请求
+ 
+ @param url 传入post所需要的URL地址
+ @param params 传入post所用参数
+ @param success 返回成功获取的数据
+ @param failure 返回失败日志
+ */
+- (void)PostDataWithURL:(NSString *)url AndParams:(NSDictionary *)params IfJSONType:(BOOL)isJSON Success:(void(^)(NSDictionary * responseObject))success Failure:(void(^)(NSString *errorInfo))failure;
+
 @end

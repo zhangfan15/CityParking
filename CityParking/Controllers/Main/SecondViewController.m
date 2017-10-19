@@ -29,6 +29,11 @@
 
 @implementation SecondViewController
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -211,7 +216,6 @@
             default:{
                 if (indexPath.row == 0) {
                     SectionTitleCell * cell = [self.table dequeueReusableCellWithIdentifier:@"SectionTitleCell" forIndexPath:indexPath];
-                    cell.contentView.backgroundColor = UIColor.greenColor;
                     cell.cellTitle.text  = sctionTitleArr[indexPath.section-2];
                     if (indexPath.section == 3) {
                         [cell.cellButton setTitle:@"" forState:UIControlStateNormal];
@@ -434,6 +438,8 @@
         [_table registerNib:[UINib nibWithNibName:@"SectionTitleCell" bundle:nil] forCellReuseIdentifier:@"SectionTitleCell"];
         [_table registerNib:[UINib nibWithNibName:@"BusLineCell" bundle:nil] forCellReuseIdentifier:@"BusLineCell"];
         [_table registerNib:[UINib nibWithNibName:@"MapParkDataCell" bundle:nil] forCellReuseIdentifier:@"MapParkDataCell"];
+        [_table registerNib:[UINib nibWithNibName:@"WeatherTableViewCell" bundle:nil] forCellReuseIdentifier:@"WeatherTableViewCell"];
+        
     }
     return _table;
 }

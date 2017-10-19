@@ -43,17 +43,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    NSString * logStatus = [[NSUserDefaults standardUserDefaults] objectForKey:IS_LOGINSUCCESS];
-//    if (logStatus == nil || ![logStatus isEqualToString:@"YES"]) {
-//        UIViewController * loginVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//        [self presentViewController:loginVC animated:YES completion:nil];
-//    }
+    NSString * logStatus = [[NSUserDefaults standardUserDefaults] objectForKey:IS_LOGINSUCCESS];
+    if (logStatus == nil || ![logStatus isEqualToString:@"YES"]) {
+        UIViewController * loginVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
     [_mapView viewWillAppear];
     _mapView.delegate = self;
     _locService.delegate = self;
+    _poisearch.delegate = self;
     //设置打开抽屉模式
     self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
-    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -259,7 +259,7 @@
                 [_menuBtn setImage:[UIImage imageNamed:@"leftArrow"] forState:UIControlStateSelected];
             }
             [self addAnnotationToMapWithData:dataArr];
-        }else {
+        } else {
             [RKDropdownAlert title:@"当前范围内未找到结果" message:@"" backgroundColor:COLOR_WITH_HEX(0x417293) textColor:nil time:1 delegate:self];
         }
         if (type == nil) {
@@ -409,8 +409,7 @@
 }
 
 #pragma mark - 懒加载
--(SecondViewController *)vc
-{
+-(SecondViewController *)vc {
     if (!_vc) {
         _vc = [[SecondViewController alloc] init];
         
@@ -468,11 +467,14 @@
  *用户位置更新后，会调用此函数
  *@param userLocation 新的用户位置
  */
-- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
-{
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
     mapCenter = CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
     [_mapView updateLocationData:userLocation];
     i_userLocation = userLocation.location;
+    NSDictionary * location = @{@"lat":[NSString stringWithFormat:@"%.f",userLocation.location.coordinate.latitude],
+                                @"lng":[NSString stringWithFormat:@"%.f",userLocation.location.coordinate.longitude]
+                                };
+    [[NSUserDefaults standardUserDefaults] setObject:location forKey:USER_LOCATION];
     [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
     [_locService stopUserLocationService];
     [_startBtn setEnabled:YES];
@@ -531,7 +533,7 @@
         }
     }
     
-    else if (errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD){
+    else if (errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD) {
         //当在设置城市未找到结果，但在其他城市找到结果时，回调建议检索城市列表
         // result.cityList;
         if (collectionSelectIndex) {
@@ -580,7 +582,6 @@
         for (MarkModel *model in dataArr) {
             if (model.lat.doubleValue  == annotation.coordinate.latitude &&
                 model.lng.doubleValue == annotation.coordinate.longitude) {
-                
                 //停车场 PMK、神州租车 SZZC、立体 LTK、慢行 MX
                 if ([model.ptype isEqualToString:@"PMK"]) {
                     annotationView.image = [UIImage imageNamed:@"mapPark"];
