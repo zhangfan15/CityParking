@@ -114,10 +114,20 @@
 }
 
 - (IBAction)parkButtonClick:(UIButton *)sender {
-    [self closeKeyBoard];
-    [UIView animateWithDuration:0.5 animations:^{
-        _tableToBottomDistance.constant = 0;
-    }];
+    if (parkArr.count) {
+        [self closeKeyBoard];
+        [UIView animateWithDuration:0.5 animations:^{
+            _tableToBottomDistance.constant = 0;
+        }];
+    } else {
+        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"暂无数据，请先选择城市区县" message:@""];
+        [alertView setButtonCancelBgColor:MAIN_COLOR];
+        [alertView addAction:[TYAlertAction actionWithTitle:@"确定" style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
+            
+        }]];
+        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (IBAction)cancleButtonClick:(UIButton *)sender {

@@ -35,7 +35,7 @@
 }
 
 - (void)getParkingDataToRefreshTable {
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/InformationReport/realTimeVehicleState" AndParams:@{@"ckid":@"16121317253526"}  IfShowHUD:YES Success:^(NSDictionary *responseObject) {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/InformationReport/realTimeVehicleStates" AndParams:@{@"ckid":@"16121317253526"}  IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         NSArray * arr = responseObject[@"data"];
         if (arr != nil && arr.count) {
             for (NSDictionary * tempDic in arr) {

@@ -7,7 +7,7 @@ pod 'TYAlertController'
 pod 'MJRefresh'
 pod 'ActionSheetPicker-3.0'
 pod 'MJExtension'
-#pod 'PPRevealSideViewController', '~> 1.2.1'
+#pod 'ECSlidingViewController', '~> 2.0.3'
 
 platform :ios, '8.0'
 pod 'AFNetworking', '~> 3.0'

@@ -29,7 +29,7 @@
 @property (nonatomic, strong) UIView                    *shadowView;
 
 @property (nonatomic, strong) UISwipeGestureRecognizer  *swipe1;
-
+@property (nonatomic, strong) UISwipeGestureRecognizer  *swipe2;
 @property (nonatomic, strong) UIPanGestureRecognizer    *pan;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnToBottomDistance;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewHeight;
@@ -53,10 +53,10 @@
     _locService.delegate = self;
     _poisearch.delegate = self;
     //设置打开抽屉模式
-    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+//    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -417,14 +417,13 @@
         // -------------- 添加手势 轻扫手势  -----------
         self.swipe1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
         self.swipe1.direction = UISwipeGestureRecognizerDirectionDown ; // 设置手势方向
-        
         self.swipe1.delegate = self;
         [_vc.table addGestureRecognizer:self.swipe1];
         
-        UISwipeGestureRecognizer *swipe2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        swipe2.direction = UISwipeGestureRecognizerDirectionUp; // 设置手势方向
-        swipe2.delegate = self;
-        [_vc.table addGestureRecognizer:swipe2];
+        self.swipe2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        self.swipe2.direction = UISwipeGestureRecognizerDirectionUp; // 设置手势方向
+        self.swipe2.delegate = self;
+        [_vc.table addGestureRecognizer:self.swipe2];
         _vc.delegate = self;
     }
     return _vc;

@@ -8,26 +8,43 @@
 
 #import "ParkSubmmitViewController.h"
 
-@interface ParkSubmmitViewController ()<UITableViewDelegate,UITableViewDataSource>{
-    NSArray * tableTitles;
+@interface ParkSubmmitViewController (){
+//    NSArray * tableTitles;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UILabel *parkName;
+@property (weak, nonatomic) IBOutlet UILabel *lotNumber;
+@property (weak, nonatomic) IBOutlet UILabel *parkAddress;
+@property (weak, nonatomic) IBOutlet UILabel *userNumber;
+@property (weak, nonatomic) IBOutlet UILabel *lotPrice;
+@property (weak, nonatomic) IBOutlet UITextField *plateNumber;
+@property (weak, nonatomic) IBOutlet UIButton *arrTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *livTimeButton;
+
 
 @end
 
 @implementation ParkSubmmitViewController
 
+@synthesize detailmodel,markModel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    tableTitles = @[@[@"车位信息",@"车库名",@"车位号",@"车库地址",@"会员卡号"],
-                    @[@"时价",@"车牌号",@"预定时间",@"离开时间"]];
+    [self initSubViews];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initSubViews {
+    _parkName.text = markModel.cname;
+    _lotNumber.text = detailmodel.code;
+    _parkAddress.text = markModel.dz;
+    _userNumber.text = detailmodel.accid;
+    _lotPrice.text = [NSString stringWithFormat:@"%@元",markModel.charge];
 }
 
 - (IBAction)leftButtonClick:(UIButton *)sender {
@@ -47,99 +64,10 @@
 }
 */
 
-#pragma mark UITableViewDelegate,UITableViewDataSource
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSString * Identifier = @"OrderDetailCell";
-//    OrderDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-//    if (!cell) {
-//        cell = [[OrderDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-//    }
-//    if (!indexPath.row) {
-//        cell.cellTitleLabel.textColor = [UIColor blackColor];
-//        cell.cellSubTitleLabel.hidden = YES;
-//    } else {
-//        cell.cellTitleLabel.textColor = [UIColor darkGrayColor];
-//        cell.cellSubTitleLabel.hidden = NO;
-//    }
-//    cell.cellTitleLabel.text = tableTitles[indexPath.section][indexPath.row];
-//    if (indexPath.section == 0) {
-//        switch (indexPath.row) {
-//            case 1:{
-//                cell.cellSubTitleLabel.text = bookModel.accid;
-//            }
-//                break;
-//            case 2:{
-//                cell.cellSubTitleLabel.text = bookModel.time;
-//            }
-//                break;
-//            case 3:{
-//                cell.cellSubTitleLabel.textColor = COLOR_WITH_HEX(0x24db43);
-//                if ([bookModel.orderStatus isEqualToString:@"R"]) {
-//                    cell.cellSubTitleLabel.text = @"预订";
-//                } else if ([bookModel.orderStatus isEqualToString:@"X"]) {
-//                    cell.cellSubTitleLabel.text = @"取消";
-//                } else if ([bookModel.orderStatus isEqualToString:@"N"]) {
-//                    cell.cellSubTitleLabel.text = @"未到";
-//                } else if ([bookModel.orderStatus isEqualToString:@"O"]) {
-//                    cell.cellSubTitleLabel.text = @"离开";
-//                } else{
-//                    cell.cellSubTitleLabel.text = @"在停车";
-//                }
-//            }
-//                break;
-//            default:
-//                break;
-//        }
-//    } else {
-//        switch (indexPath.row) {
-//            case 1:{
-//                cell.cellSubTitleLabel.text = bookModel.cname;
-//            }
-//                break;
-//            case 2:{
-//                cell.cellSubTitleLabel.text = bookModel.dz;
-//            }
-//                break;
-//            case 3:{
-//                cell.cellSubTitleLabel.text = bookModel.plateNumber;
-//            }
-//                break;
-//            case 4:{
-//                cell.cellSubTitleLabel.text = [NSString stringWithFormat:@"¥%.f",bookModel.price];
-//                cell.cellSubTitleLabel.textColor = COLOR_WITH_HEX(0xdd5652);
-//            }
-//                break;
-//            case 5:{
-//                cell.cellSubTitleLabel.text = bookModel.arrdate;
-//            }
-//                break;
-//            case 6:{
-//                cell.cellSubTitleLabel.text = bookModel.depdate;
-//            }
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//    return cell;
-    return nil;
+- (IBAction)arrButtonClick:(UIButton *)sender {
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [tableTitles[section] count];
+- (IBAction)livButtonClick:(UIButton *)sender {
 }
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return tableTitles.count;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section) {
-        return 20.f;
-    }
-    return 0.f;
-}
-
 
 @end

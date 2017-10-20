@@ -87,11 +87,13 @@
 #define FRAME_W(view) view.frame.size.width
 #define FRAME_H(view) view.frame.size.height
 #define Y1               50
-#define Y2               self.view.frame.size.height - 250
+#define Y2               SCREEN_HEIGHT/2
 #define Y3               SCREEN_HEIGHT - CollectionHeight - 20
 
 #define UIColorFromHex(s) [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0green:(((s &0xFF00) >>8))/255.0blue:((s &0xFF))/255.0alpha:1.0]
 
 #define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
+
+#define MAIN_COLOR COLOR_WITH_HEX(0x417293)
 
 #endif /* public_h */

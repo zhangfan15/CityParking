@@ -31,13 +31,11 @@
 }
 
 - (void)getDataWithParams {
-    if (dataArr.count) {
-        [dataArr removeAllObjects];
-    }
     UserInfo * user = UserInformation;
     [[NetworkTool shareNetworkTool] PostDataWithURL:@"pc/bind/queryShareData" AndParams:@{@"hyid":user.hyid} IfShowHUD:YES Success:^(NSDictionary *responseObject) {
         NSArray * arr = responseObject[@"data"];
         if (arr != nil && arr.count) {
+            [dataArr removeAllObjects];
             for (NSDictionary * tempDic in arr) {
                 MyParkingModel * model = [MyParkingModel modelObjectWithDictionary:tempDic];
                 [dataArr addObject:model];

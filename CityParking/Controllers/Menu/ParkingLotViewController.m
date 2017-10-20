@@ -34,7 +34,7 @@
     } else if (lotModel.state == 1) {
         _latStatus.text = @"车位已发布";
     } else {
-        _latStatus.text = @"车位已退回";
+        _latStatus.text = @"车位被退回，请联系客服!";
     }
 }
 

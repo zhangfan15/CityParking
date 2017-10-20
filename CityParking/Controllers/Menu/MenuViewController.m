@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "public.h"
 
-@interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>{
     NSArray * titleArr;
     NSArray * imageArr;
 }
@@ -31,6 +31,11 @@
                  @[@"menuSearch",@"menuShare",@"menuMyPark"],
                  @[@"menuPay"]];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,16 +67,18 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0.f;
-    } else {
-        return 10.f;
-    }
+    return 20.f;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.f;
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/4*3, 20.f)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 0.f;
+//}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(tintColor)]) {
@@ -145,16 +152,19 @@
                 case 0:{
                     UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"OrderCenterViewController"];
                     [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
                 }
                     break;
                 case 1:{
                     UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"RentOrderListViewController"];
                     [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
                 }
                     break;
                 case 2:{
                     UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyInformationViewController"];
                     [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
                 }
                     break;
             }
@@ -165,6 +175,7 @@
                 case 0:{
                     FindCarViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"FindCarViewController"];
                     [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
+                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
                 }
                     break;
                 case 1:{
@@ -173,6 +184,7 @@
                 case 2:{
                     MyParkingViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyParkingViewController"];
                     [self.mm_drawerController.navigationController pushViewController:vc animated:YES];
+                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
                 }
                     break;
             }

@@ -157,18 +157,22 @@
                 }
             }
         }
-        [self reloadTableViewWithData];
+        [self reloadTableViewWithDataWithAnotition:NO];
     } Failure:^(NSString *errorInfo) {
         
     }];
 }
 
-- (void)reloadTableViewWithData {
+- (void)reloadTableViewWithDataWithAnotition:(BOOL)anotition {
     if (isCurrentBtnClick) {
         if (menuBtnClickIndex == 0) {
             if (currentBookingData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -176,7 +180,11 @@
         } else if (menuBtnClickIndex == 1) {
             if (currentShareData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -184,7 +192,11 @@
         } else {
             if (currentZucheData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -194,7 +206,11 @@
         if (menuBtnClickIndex == 0) {
             if (historyBookingData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -202,7 +218,11 @@
         } else if (menuBtnClickIndex == 1) {
             if (historyShareData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -210,7 +230,11 @@
         } else {
             if (historyZucheData.count) {
                 _emptyView.hidden = YES;
-                [_table reloadData];
+                if (anotition) {
+                    [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+                } else {
+                    [_table reloadData];
+                }
             } else {
                 _emptyView.hidden = NO;
                 [self.view bringSubviewToFront:_emptyView];
@@ -253,12 +277,12 @@
         [UIView animateWithDuration:0.2f animations:^{
             _lvseLineConstraint.constant=0;
         }];
-        [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+        [self reloadTableViewWithDataWithAnotition:YES];
     }else{
         [UIView animateWithDuration:0.2f animations:^{
             _lvseLineConstraint.constant=SCREEN_WIDTH/2;
         }];
-        [_table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+        [self reloadTableViewWithDataWithAnotition:YES];
     }
 }
 
