@@ -60,7 +60,7 @@
 /// 配置工具条
 - (void)configToolView {
     self.toolView = [[UIView alloc] init];
-    self.toolView.frame = CGRectMake(0, 0, self.frame.size.width, 44);
+    self.toolView.frame = CGRectMake(0, 0, self.frame.size.width, 30);
     [self addSubview:self.toolView];
     
     UIButton *saveBtn = [[UIButton alloc] init];
@@ -86,7 +86,7 @@
 
 /// 配置UIPickerView
 - (void)configPickerView {
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.toolView.frame), self.frame.size.width, self.frame.size.height - 44)];
+    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.toolView.frame), self.frame.size.width, self.frame.size.height - 30)];
     self.pickerView.backgroundColor = [UIColor whiteColor];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
@@ -339,13 +339,13 @@
 }
 /// UIPickerView返回每一行的高度
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 44;
+    return 30;
 }
 /// UIPickerView返回每一行的View
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     NSLog(@"%@", view);
     
-    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, 44)];
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, 30)];
     titleLbl.font = [UIFont systemFontOfSize:15];
     titleLbl.textAlignment = NSTextAlignmentCenter;
     titleLbl.text = [self.dataArray[component] objectAtIndex:row%[self.dataArray[component] count]];
