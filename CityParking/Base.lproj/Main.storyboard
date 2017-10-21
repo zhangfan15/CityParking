@@ -1354,8 +1354,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-03-jT5">
-                                <rect key="frame" x="30" y="254" width="260" height="30"/>
+                                <rect key="frame" x="30" y="254" width="260" height="40"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.44705882349999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pAb-g6-C2E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="提交">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1363,7 +1366,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="15"/>
+                                        <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1657,7 +1660,6 @@
                                             <constraints>
                                                 <constraint firstItem="MaX-Wp-qWw" firstAttribute="top" secondItem="SsL-3y-QYN" secondAttribute="bottom" id="0ga-GM-AWW"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iCF-Jy-0rc" secondAttribute="trailing" constant="20" symbolic="YES" id="2I8-1c-uj1"/>
-                                                <constraint firstItem="Jjm-8c-DUC" firstAttribute="leading" secondItem="uZJ-cW-HhV" secondAttribute="leadingMargin" constant="221" id="2PR-T6-NZ7"/>
                                                 <constraint firstItem="dTb-HD-ReV" firstAttribute="trailing" secondItem="MaX-Wp-qWw" secondAttribute="trailing" id="4HM-eX-o6Z"/>
                                                 <constraint firstItem="thV-Xv-dny" firstAttribute="trailing" secondItem="a91-N6-0HP" secondAttribute="trailing" constant="-2" id="8eC-iA-GX9"/>
                                                 <constraint firstItem="aOe-5S-p0e" firstAttribute="top" secondItem="VJc-5B-A8V" secondAttribute="bottom" constant="2" id="AnJ-7X-cIV"/>
@@ -1676,7 +1678,7 @@
                                                 <constraint firstItem="2qF-Xk-wE9" firstAttribute="top" secondItem="a91-N6-0HP" secondAttribute="top" constant="-2" id="cG4-Lk-PPW"/>
                                                 <constraint firstItem="iCF-Jy-0rc" firstAttribute="top" secondItem="aOe-5S-p0e" secondAttribute="bottom" constant="2" id="gmg-Zn-5tU"/>
                                                 <constraint firstItem="thV-Xv-dny" firstAttribute="leading" secondItem="Esj-Qs-lOt" secondAttribute="trailing" constant="1" id="hpd-tp-VoH"/>
-                                                <constraint firstItem="Jjm-8c-DUC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uZJ-cW-HhV" secondAttribute="trailingMargin" id="i1l-rI-dAM"/>
+                                                <constraint firstItem="Jjm-8c-DUC" firstAttribute="trailing" secondItem="uZJ-cW-HhV" secondAttribute="trailingMargin" id="i1l-rI-dAM"/>
                                                 <constraint firstAttribute="trailing" secondItem="dTb-HD-ReV" secondAttribute="trailing" id="iiw-c4-xxs"/>
                                                 <constraint firstItem="SsL-3y-QYN" firstAttribute="top" secondItem="dTb-HD-ReV" secondAttribute="bottom" id="jNS-1p-5Uw"/>
                                                 <constraint firstItem="dTb-HD-ReV" firstAttribute="top" secondItem="uZJ-cW-HhV" secondAttribute="top" id="pY4-f3-wpo"/>
@@ -2368,8 +2370,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-lq-vFw">
-                                <rect key="frame" x="30" y="474" width="260" height="30"/>
+                                <rect key="frame" x="30" y="474" width="260" height="40"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.44705882349999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mhx-Qd-PTX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="提交">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2377,7 +2382,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="15"/>
+                                        <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -2980,10 +2985,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjx-NV-Cdq">
-                                <rect key="frame" x="20" y="364" width="280" height="36"/>
+                                <rect key="frame" x="20" y="364" width="280" height="40"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.44705882349999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Xs4-5Y-TSS"/>
+                                    <constraint firstAttribute="height" constant="40" id="Xs4-5Y-TSS"/>
                                 </constraints>
                                 <state key="normal" title="提交">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2991,7 +2996,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="6"/>
+                                        <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -2999,13 +3004,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqm-HA-WhB">
-                                <rect key="frame" x="8" y="420" width="57" height="16"/>
+                                <rect key="frame" x="8" y="424" width="57" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHt-ef-SpF">
-                                <rect key="frame" x="8" y="441" width="304" height="57.5"/>
+                                <rect key="frame" x="8" y="445" width="304" height="57.5"/>
                                 <string key="text">1.为确保车为顺利审核，请提交正确的车位信息。
 2.审核过程中，客服人员将会和您核对车位信息，请保持电话畅通。
 3.审核成功后，可以发布车位。</string>

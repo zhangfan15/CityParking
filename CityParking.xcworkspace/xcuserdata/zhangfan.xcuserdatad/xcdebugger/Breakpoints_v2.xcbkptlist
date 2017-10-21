@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CityParking/Controllers/Menu/OrderCenterViewController.m"
-            timestampString = "530184638.337841"
+            timestampString = "530264652.036261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -68,7 +68,7 @@
                   moduleName = "CityParking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangfan/SVN/CityParking/CityParking/Controllers/Menu/OrderCenterViewController.m"
-                  timestampString = "530184638.439066"
+                  timestampString = "530264652.112207"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -83,7 +83,7 @@
                   moduleName = "CityParking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangfan/SVN/CityParking/CityParking/Controllers/Menu/OrderCenterViewController.m"
-                  timestampString = "530184638.441761"
+                  timestampString = "530264652.115136"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CityParking/Controllers/Menu/OrderCenterViewController.m"
-            timestampString = "530184638.338131"
+            timestampString = "530264652.036384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -116,12 +116,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CityParking/Controllers/Main/MapViewController.m"
-            timestampString = "530184638.338391"
+            timestampString = "530264652.036476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
             landmarkName = "-swipe:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CityParking/Controllers/Menu/MenuViewController.m"
+            timestampString = "530264652.036542"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

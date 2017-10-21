@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "public.h"
 
-@interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>{
+@interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray * titleArr;
     NSArray * imageArr;
 }
@@ -75,10 +75,6 @@
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 0.f;
-//}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(tintColor)]) {

@@ -396,6 +396,14 @@
         [_menuBtn setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
         [_menuBtn setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateSelected];
     } else {
+//        UIViewController *leftVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+//        [UIView  beginAnimations:nil context:NULL];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:nil cache:nil];
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationDuration:0.75];
+//        [self.navigationController pushViewController:leftVC animated:NO];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+//        [UIView commitAnimations];
         [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }
 }

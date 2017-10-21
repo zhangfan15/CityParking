@@ -40,16 +40,13 @@
     //1、初始化控制器
     UIViewController *centerVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     UIViewController *leftVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    
     //3、使用MMDrawerController
     drawerController = [[MMDrawerController alloc]initWithCenterViewController:centerVC leftDrawerViewController:leftVC];
-    drawerController.showsShadow = YES;
-    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
-    drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
     
     //4、设置打开/关闭抽屉的手势
-//    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    drawerController.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
+    drawerController.openDrawerGestureModeMask  = MMOpenDrawerGestureModeNone;
+    drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
     //5、设置左右两边抽屉显示的多少
     drawerController.maximumLeftDrawerWidth = SCREEN_WIDTH/4*3;
 }
