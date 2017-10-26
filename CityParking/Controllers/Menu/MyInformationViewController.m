@@ -100,6 +100,8 @@
                 }
                     break;
                 case 1:{
+                    MyWalletViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyWalletViewController"];
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
             }
@@ -108,6 +110,8 @@
         case 1:{
             switch (indexPath.row) {
                 case 0:{
+                    MyCarsViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyCarsViewController"];
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 case 1:{
@@ -119,6 +123,8 @@
         case 2:{
             switch (indexPath.row) {
                 case 0:{
+                    CouponViewController * vc = [MainStoryboard instantiateViewControllerWithIdentifier:@"CouponViewController"];
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 case 1:{

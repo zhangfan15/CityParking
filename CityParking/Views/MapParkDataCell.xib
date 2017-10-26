@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,19 +21,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥暂无报价／h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-ua-Eic">
-                        <rect key="frame" x="229" y="63" width="82.5" height="16"/>
+                        <rect key="frame" x="229" y="65" width="82.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.89019608500000003" green="0.2039215714" blue="0.39215686919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车位：114/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re2-Gx-l0j">
-                        <rect key="frame" x="82" y="64.5" width="62" height="13.5"/>
+                        <rect key="frame" x="82" y="66.5" width="62" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隆翔智慧停车场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7V-3B-rso">
-                        <rect key="frame" x="82" y="8" width="230" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隆翔智慧停车场" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7V-3B-rso">
+                        <rect key="frame" x="82" y="6" width="230" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -56,13 +55,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="西安市高新区科技二路" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-K9-aBM">
-                        <rect key="frame" x="82" y="27.5" width="230" height="13.5"/>
+                        <rect key="frame" x="82" y="35.5" width="230" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间：00:00-23:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-QS-Fnz">
-                        <rect key="frame" x="82" y="46" width="230" height="13.5"/>
+                        <rect key="frame" x="82" y="51" width="230" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
@@ -73,25 +72,24 @@
                     <constraint firstItem="Ukz-iK-eZ8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2CS-3o-ODR"/>
                     <constraint firstItem="J7o-QS-Fnz" firstAttribute="leading" secondItem="Ukz-iK-eZ8" secondAttribute="trailing" constant="5" id="8Od-St-L0c"/>
                     <constraint firstAttribute="trailingMargin" secondItem="J7o-QS-Fnz" secondAttribute="trailing" id="ACi-EB-W1n"/>
+                    <constraint firstItem="Re2-Gx-l0j" firstAttribute="bottom" secondItem="Ukz-iK-eZ8" secondAttribute="bottom" constant="2" id="BpJ-eC-nE1"/>
                     <constraint firstItem="Ukz-iK-eZ8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="CEi-Fs-dse"/>
                     <constraint firstItem="9un-B5-1fl" firstAttribute="bottom" secondItem="Ukz-iK-eZ8" secondAttribute="bottom" constant="-2.5" id="HdC-ab-cyQ"/>
                     <constraint firstItem="9un-B5-1fl" firstAttribute="centerY" secondItem="gzw-i7-PX4" secondAttribute="centerY" id="IqF-ms-Ttz"/>
                     <constraint firstItem="9un-B5-1fl" firstAttribute="trailing" secondItem="Ukz-iK-eZ8" secondAttribute="trailing" constant="-1" id="MIu-Gs-d2j"/>
                     <constraint firstItem="zgr-K9-aBM" firstAttribute="leading" secondItem="Ukz-iK-eZ8" secondAttribute="trailing" constant="5" id="Mnz-JX-sEh"/>
-                    <constraint firstItem="h7V-3B-rso" firstAttribute="top" secondItem="Ukz-iK-eZ8" secondAttribute="top" id="RVx-KP-Y5Y"/>
+                    <constraint firstItem="h7V-3B-rso" firstAttribute="top" secondItem="Ukz-iK-eZ8" secondAttribute="top" constant="-2" id="RVx-KP-Y5Y"/>
                     <constraint firstItem="tdJ-ua-Eic" firstAttribute="centerY" secondItem="Re2-Gx-l0j" secondAttribute="centerY" id="XkD-kG-x1Z"/>
-                    <constraint firstItem="Re2-Gx-l0j" firstAttribute="top" secondItem="J7o-QS-Fnz" secondAttribute="bottom" constant="5" id="ciy-FK-gXk"/>
+                    <constraint firstItem="Re2-Gx-l0j" firstAttribute="top" secondItem="J7o-QS-Fnz" secondAttribute="bottom" constant="2" id="ciy-FK-gXk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zgr-K9-aBM" secondAttribute="trailing" id="cwl-Hw-rgs"/>
                     <constraint firstItem="9un-B5-1fl" firstAttribute="leading" secondItem="gzw-i7-PX4" secondAttribute="trailing" constant="2" id="f4m-cc-F1d"/>
-                    <constraint firstItem="zgr-K9-aBM" firstAttribute="top" secondItem="h7V-3B-rso" secondAttribute="bottom" constant="5" id="gac-yg-a1W"/>
-                    <constraint firstItem="J7o-QS-Fnz" firstAttribute="top" secondItem="zgr-K9-aBM" secondAttribute="bottom" constant="5" id="iaz-bY-3c2"/>
+                    <constraint firstItem="J7o-QS-Fnz" firstAttribute="top" secondItem="zgr-K9-aBM" secondAttribute="bottom" constant="2" id="iaz-bY-3c2"/>
                     <constraint firstItem="Ukz-iK-eZ8" firstAttribute="width" secondItem="Ukz-iK-eZ8" secondAttribute="height" multiplier="1:1" id="oG8-7B-zet"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tdJ-ua-Eic" secondAttribute="trailing" id="uwE-vI-Yu3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="h7V-3B-rso" secondAttribute="trailing" id="v0l-hf-QC0"/>
                     <constraint firstItem="h7V-3B-rso" firstAttribute="leading" secondItem="Ukz-iK-eZ8" secondAttribute="trailing" constant="5" id="yCH-5s-s2o"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="parkAdress" destination="zgr-K9-aBM" id="aC0-vr-eC1"/>
                 <outlet property="parkDistance" destination="9un-B5-1fl" id="5EG-j2-cn8"/>
@@ -101,6 +99,7 @@
                 <outlet property="parkPrice" destination="tdJ-ua-Eic" id="3TH-Bn-Qiy"/>
                 <outlet property="parkTime" destination="J7o-QS-Fnz" id="Cp2-c8-T4O"/>
             </connections>
+            <point key="canvasLocation" x="-887" y="100"/>
         </tableViewCell>
     </objects>
     <resources>

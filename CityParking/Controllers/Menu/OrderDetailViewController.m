@@ -13,6 +13,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableToBottomHeight;
+@property (weak, nonatomic) IBOutlet UIView *BottomMenuView;
 
 @end
 
@@ -25,6 +27,15 @@
     // Do any additional setup after loading the view.
     tableTitles = @[@[@"订单信息",@"订单编号",@"下单时间",@"订单状态"],
                     @[@"车辆信息",@"车库名称",@"车库地址",@"车牌号码",@"消费金额",@"开始时间",@"结束时间"]];
+    if ([bookModel.orderStatus isEqualToString:@"R"]
+        || [bookModel.orderStatus isEqualToString:@"N"]
+        || [bookModel.orderStatus isEqualToString:@"I"]) {
+        _tableToBottomHeight.constant = 64;
+        _BottomMenuView.hidden = NO;
+    } else {
+        _tableToBottomHeight.constant = 0;
+        _BottomMenuView.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,6 +138,43 @@
         return 20.f;
     }
     return 0.f;
+}
+
+- (IBAction)navButtonClick:(UIButton *)sender {
+    [self NavigationToDestinationWithLocationName:bookModel.cname AndLatitude:bookModel.lat.doubleValue AndLongitude:bookModel.lng.doubleValue];
+}
+
+- (IBAction)cancelButtonClick:(UIButton *)sender {
+    [self deletOrderWithParam:bookModel.accid];
+}
+
+- (void)deletOrderWithParam:(NSString *)param {
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/updateIOSBooking" AndParams:@{@"accid":param}   IfShowHUD:YES Success:^(NSDictionary *responseObject) {
+        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"订单已取消" message:@""];
+        [alertView addAction:[TYAlertAction actionWithTitle:@"确定" style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } Failure:^(NSString *errorInfo) {
+        
+    }];
+}
+
+-(void) NavigationToDestinationWithLocationName:(NSString *)name AndLatitude:(double)lat AndLongitude:(double)lng
+{
+    CLLocationCoordinate2D destinnation = CLLocationCoordinate2DMake(lat, lng);
+    //当前的位置
+    MKMapItem * currentLocation              = [MKMapItem mapItemForCurrentLocation];
+    //目的地的位置
+    MKMapItem * toLocation              = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:destinnation addressDictionary:nil]];
+    
+    toLocation.name                     = name;
+    
+    NSArray *items                      = [NSArray arrayWithObjects:currentLocation, toLocation, nil];
+    NSDictionary *options               = @{ MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsMapTypeKey: [NSNumber numberWithInteger:MKMapTypeStandard], MKLaunchOptionsShowsTrafficKey:@YES };
+    //打开苹果自身地图应用，并呈现特定的item
+    [MKMapItem openMapsWithItems:items launchOptions:options];
 }
 
 @end

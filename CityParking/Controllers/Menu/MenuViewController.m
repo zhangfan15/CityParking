@@ -24,10 +24,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroud"]];
     self.table.backgroundColor = [UIColor clearColor];
-    titleArr = @[@[@"订单中心",@"神州租车",@"用户中心"],
+    titleArr = @[@[@"订单中心",@"用户中心"],
                  @[@"车位查找",@"共享车位",@"我的车位"],
                  @[@"快速支付"]];
-    imageArr = @[@[@"menuOrder",@"markRent",@"menuUser"],
+    imageArr = @[@[@"menuOrder",@"menuUser"],
                  @[@"menuSearch",@"menuShare",@"menuMyPark"],
                  @[@"menuPay"]];
     // Do any additional setup after loading the view.
@@ -152,12 +152,6 @@
                 }
                     break;
                 case 1:{
-                    UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"RentOrderListViewController"];
-                    [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
-                    self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
-                }
-                    break;
-                case 2:{
                     UIViewController * rentVC = [MainStoryboard instantiateViewControllerWithIdentifier:@"MyInformationViewController"];
                     [self.mm_drawerController.navigationController pushViewController:rentVC animated:YES];
                     self.mm_drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;

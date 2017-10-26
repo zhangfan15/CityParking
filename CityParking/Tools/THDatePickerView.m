@@ -120,8 +120,6 @@
 #pragma mark - 点击方法
 /// 保存按钮点击方法
 - (void)saveBtnClick {
-    NSLog(@"点击了保存");
-    
     NSString *month = self.month.length == 3 ? [NSString stringWithFormat:@"%ld", self.month.integerValue] : [NSString stringWithFormat:@"0%ld", self.month.integerValue];
     NSString *day = self.day.length == 3 ? [NSString stringWithFormat:@"%ld", self.day.integerValue] : [NSString stringWithFormat:@"0%ld", self.day.integerValue];
     NSString *hour = self.hour.length == 3 ? [NSString stringWithFormat:@"%ld", self.hour.integerValue] : [NSString stringWithFormat:@"0%ld", self.hour.integerValue];
@@ -134,7 +132,6 @@
 }
 /// 取消按钮点击方法
 - (void)cancelBtnClick {
-    NSLog(@"点击了取消");
     if ([self.delegate respondsToSelector:@selector(datePickerViewCancelBtnClickDelegate:)]) {
         [self.delegate datePickerViewCancelBtnClickDelegate:self];
     }
@@ -298,36 +295,7 @@
         } break;
         case 4: { // 分
             // 如果选择年大于当前年 就直接赋值时
-            //            if ([self.year integerValue] > [self.timeArr[0] integerValue]) {
             self.minute = self.minuteArr[row%[self.dataArray[component] count]];
-            //                // 如果选择的年等于当前年，就判断月份
-            //            } else if ([self.year integerValue] == [self.timeArr[0] integerValue]) {
-            //                // 如果选择的月份大于当前月份 就直接复制时
-            //                if ([self.month integerValue] > [self.timeArr[1] integerValue]) {
-            //                    self.minute = self.minuteArr[row%[self.dataArray[component] count]];
-            //                    // 如果选择的月份等于当前月份，就判断日
-            //                } else if ([self.month integerValue] == [self.timeArr[1] integerValue]) {
-            //                    // 如果选择的日大于当前日，就直接复制时
-            //                    if ([self.day integerValue] > [self.timeArr[2] integerValue]) {
-            //                        self.minute = self.minuteArr[row%[self.dataArray[component] count]];
-            //                        // 如果选择的日等于当前日，就判断时
-            //                    } else if ([self.day integerValue] == [self.timeArr[2] integerValue]) {
-            //                        // 如果选择的时大于当前时，就直接赋值
-            //                        if ([self.hour integerValue] > [self.timeArr[3] integerValue]) {
-            //                            self.minute = self.minuteArr[row%[self.dataArray[component] count]];
-            //                        // 如果选择的时等于当前时,就判断分
-            //                        } else if ([self.hour integerValue] == [self.timeArr[3] integerValue]) {
-            //                            // 如果选择的分小于当前分，就刷新分
-            //                            if ([self.minuteArr[row%[self.dataArray[component] count]] integerValue] < [self.timeArr[4] integerValue]) {
-            //                                [pickerView selectRow:[self.dataArray[component] indexOfObject:self.timeArr[component]] inComponent:component animated:YES];
-            //                            // 如果选择分大于当前分，就直接赋值
-            //                            } else {
-            //                                self.minute = self.minuteArr[row%[self.dataArray[component] count]];
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
         } break;
         default: break;
     }
@@ -343,8 +311,6 @@
 }
 /// UIPickerView返回每一行的View
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-    NSLog(@"%@", view);
-    
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, 30)];
     titleLbl.font = [UIFont systemFontOfSize:15];
     titleLbl.textAlignment = NSTextAlignmentCenter;

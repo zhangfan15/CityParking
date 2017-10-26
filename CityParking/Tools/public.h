@@ -28,6 +28,12 @@
 #import "ParkingLotViewController.h"
 #import "ParkSubmmitViewController.h"
 #import "DetailInfoViewController.h"
+#import "MyWalletViewController.h"
+#import "RechargeViewController.h"
+#import "RechargeListViewController.h"
+#import "MyCarsViewController.h"
+#import "AddCarViewController.h"
+#import "CouponViewController.h"
 
 #import "MenuCell.h"
 #import "MarkCollectionViewCell.h"
@@ -46,6 +52,9 @@
 #import "ParkingCell.h"
 #import "MyParkingCell.h"
 #import "WeatherTableViewCell.h"
+#import "RechargeTableViewCell.h"
+#import "MyCarCell.h"
+#import "CouponCell.h"
 
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
@@ -55,12 +64,15 @@
 #import <BaiduMapKit/BaiduMapAPI_Location/BMKLocationService.h>
 #import <BaiduMapKit/BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <AFNetworking/UIImage+AFNetworking.h>
 #import <RKDropdownAlert/RKDropdownAlert.h>
 #import <TYAlertController/TYAlertController.h>
 #import <MapKit/MapKit.h>
 #import <MJRefresh/MJRefresh.h>
 #import "AddressPickerView.h"
 #import "THDatePickerView.h"
+#import "ChooseCarPlateView.h"
 
 #import "MarkModel.h"
 #import "UserInfo.h"
@@ -69,10 +81,15 @@
 #import "ShareOrderModel.h"
 #import "MyParkingModel.h"
 #import "ParkDetailModel.h"
+#import "CouponModel.h"
 
 #define BaseURLString @"http://cis.3swest.com/"
+//#define BaseURLString @"http://192.18.1.119:8080/"
 
-//#define BaseURLString @"http://192.168.0.71:8080/"
+#define ImageBaseURL  @"http://106.14.28.71/parkingImg/"
+
+#define Get_Image_URL(tp) [NSString stringWithFormat:@"%@%@",ImageBaseURL,tp]
+
 
 #define IS_FIRST_LAUNCH   @"IS_FIRST_LAUNCH"  //记录是否第一次启动程序
 #define GetMapDataSuccessed   @"GetMapDataFromServerSuccessed"
@@ -88,10 +105,7 @@
 #define FRAME_W(view) view.frame.size.width
 #define FRAME_H(view) view.frame.size.height
 #define Y1               50
-#define Y2               SCREEN_HEIGHT/2
 #define Y3               SCREEN_HEIGHT - CollectionHeight - 20
-
-#define UIColorFromHex(s) [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0green:(((s &0xFF00) >>8))/255.0blue:((s &0xFF))/255.0alpha:1.0]
 
 #define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
 

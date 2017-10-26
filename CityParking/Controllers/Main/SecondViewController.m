@@ -174,12 +174,11 @@
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_showParkTable) {
         MapParkDataCell * cell = [self.table dequeueReusableCellWithIdentifier:@"MapParkDataCell" forIndexPath:indexPath];
         MarkModel * model = [tableData objectAtIndex:indexPath.section];
-        cell.parkImage.image = [UIImage imageNamed:model.tp];
+        [cell.parkImage setImageWithURL:[NSURL URLWithString:Get_Image_URL(model.tp)]];
         cell.parkDistance.text = [NSString stringWithFormat:@"%@米",model.juli];
         cell.parkName.text = model.cname;
         cell.parkAdress.text = model.dz;
@@ -230,8 +229,6 @@
                     return cell;
                 }
                 BusLineCell * cell = [self.table dequeueReusableCellWithIdentifier:@"BusLineCell" forIndexPath:indexPath];
-                //            cell.cellImage.image = [UIImage imageNamed:tableImageArr[indexPath.row]];
-                //            cell.cellTitle.text  = tableTitleArr[indexPath.row];
                 return cell;
             }
                 break;
@@ -310,10 +307,11 @@
 //    NSLog(@"+++++++ didSelect ++++++++");
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if ([cell respondsToSelector:@selector(tintColor)]) {
         
-        CGFloat cornerRadius = 5.f;
+        CGFloat cornerRadius = 10.f;
         
         cell.backgroundColor = UIColor.clearColor;
         
@@ -349,7 +347,9 @@
             CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
             
         } else {
+            
             CGPathAddRect(pathRef, nil, bounds);
+            
         }
         
         layer.path = pathRef;
@@ -357,25 +357,29 @@
         CFRelease(pathRef);
         
         //颜色修改
-        
-        layer.fillColor = [UIColor whiteColor].CGColor;
-        
-        //        layer.strokeColor=[UIColor blueColor].CGColor;
-        
+        if (_showParkTable) {
+            layer.fillColor = UIColor.whiteColor.CGColor;
+        } else {
+            if (indexPath.section >1 && indexPath.row == 0) {
+                layer.fillColor = COLOR_WITH_HEX(0x24db43).CGColor;
+            } else {
+                layer.fillColor = UIColor.whiteColor.CGColor;
+            }
+        }
         
         UIView *testView = [[UIView alloc] initWithFrame:bounds];
         
         [testView.layer insertSublayer:layer atIndex:0];
         
         testView.backgroundColor = UIColor.clearColor;
-        NSLog(@"%ld",indexPath.section);
+        
         cell.backgroundView = testView;
     }
 }
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return titleArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -461,6 +465,10 @@
         [self.collection registerNib:[UINib nibWithNibName:@"MarkCell" bundle:nil] forCellWithReuseIdentifier:@"MarkCellIdentifier"];
     }
     return _collection;
+}
+
+-(void)getNomalParking {
+    
 }
 
 @end

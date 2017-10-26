@@ -31,6 +31,10 @@
     // Do any additional setup after loading the view.
     dataArr = [NSMutableArray array];
     [self initSubViews];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self getParkingDataToRefreshTable];
 }
 
@@ -50,7 +54,7 @@
 }
 
 - (void)initSubViews {
-    self.imageView.image = [UIImage imageNamed:markModel.tp];
+    [self.imageView setImageWithURL:[NSURL URLWithString:Get_Image_URL(markModel.tp)]];
     self.parkName.text = markModel.cname;
     self.parkAddress.text = markModel.dz;
     if (markModel.time != nil && [markModel.time isKindOfClass:[NSString class]]) {

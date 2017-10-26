@@ -29,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *historyButton;
 @property (weak, nonatomic) IBOutlet UIButton *headerButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lvseLineConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn1;
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn2;
@@ -83,14 +82,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)deletOrderWithParam:(NSString *)param {
-    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/updateBooking" AndParams:@{@"accid":param}   IfShowHUD:YES Success:^(NSDictionary *responseObject) {
-        
-    } Failure:^(NSString *errorInfo) {
-        
-    }];
 }
 
 - (void)getDataRefreshTable {
@@ -248,14 +239,12 @@
     _headerButton.selected = !_headerButton.selected;
     headerBtnSelect = !headerBtnSelect;
     if (headerBtnSelect) {
-        [UIView animateWithDuration:5 animations:^{
-            _menuHeight.constant = 40.f;
-            _menuView.hidden = NO;
+        [UIView animateWithDuration:0.1 animations:^{
+            _menuView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 40);
         }];
     }else {
-        [UIView animateWithDuration:0.5 animations:^{
-            _menuHeight.constant = 0.f;
-            _menuView.hidden = YES;
+        [UIView animateWithDuration:0.1 animations:^{
+            _menuView.frame = CGRectMake(0, 24, SCREEN_WIDTH, 40);
         }];
     }
 }
@@ -287,9 +276,8 @@
 }
 
 - (IBAction)threeButtonClick:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        _menuHeight.constant = 0.f;
-        _menuView.hidden = YES;
+    [UIView animateWithDuration:0.1 animations:^{
+        _menuView.frame = CGRectMake(0, 24, SCREEN_WIDTH, 40);
     }];
     headerBtnSelect = NO;
     _headerButton.selected = NO;
@@ -360,7 +348,7 @@
         } else {
             cell.carnumber.text = @"担保预约";
         }
-        cell.parkImage.image = [UIImage imageNamed:model.tp];
+        [cell.parkImage setImageWithURL:[NSURL URLWithString:Get_Image_URL(model.tp)]];
         cell.parkName.text = model.cname;
         cell.startTime.text = model.arrdate;
         cell.endTime.text = model.depdate;
@@ -431,41 +419,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (menuBtnClickIndex == 0){
         if (isCurrentBtnClick) {
-            BookingOrderModel * model = currentBookingData[indexPath.row];
-            UIAlertController * alert = [UIAlertController alertControllerWithTitle:model.cname message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"开始导航" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self NavigationToDestinationWithLocationName:model.cname AndLatitude:model.lat.doubleValue AndLongitude:model.lng.doubleValue];
-            }];
-            [alert addAction:action1];
-            UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"取消订单" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                [self deletOrderWithParam:model.accid];
-            }];
-            [alert addAction:action2];
-            UIAlertAction * action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:action3];
-            [self presentViewController:alert animated:YES completion:nil];
+            OrderDetailViewController * VC = [MainStoryboard instantiateViewControllerWithIdentifier:@"OrderDetailViewController"];
+            VC.bookModel = currentBookingData[indexPath.row];
+            [self.navigationController pushViewController:VC animated:YES];
         } else {
             OrderDetailViewController * VC = [MainStoryboard instantiateViewControllerWithIdentifier:@"OrderDetailViewController"];
             VC.bookModel = historyBookingData[indexPath.row];
             [self.navigationController pushViewController:VC animated:YES];
         }
     }
-}
-
--(void) NavigationToDestinationWithLocationName:(NSString *)name AndLatitude:(double)lat AndLongitude:(double)lng
-{
-    CLLocationCoordinate2D destinnation = CLLocationCoordinate2DMake(lat, lng);
-    //当前的位置
-    MKMapItem * currentLocation              = [MKMapItem mapItemForCurrentLocation];
-    //目的地的位置
-    MKMapItem * toLocation              = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:destinnation addressDictionary:nil]];
-    
-    toLocation.name                     = name;
-    
-    NSArray *items                      = [NSArray arrayWithObjects:currentLocation, toLocation, nil];
-    NSDictionary *options               = @{ MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsMapTypeKey: [NSNumber numberWithInteger:MKMapTypeStandard], MKLaunchOptionsShowsTrafficKey:@YES };
-    //打开苹果自身地图应用，并呈现特定的item
-    [MKMapItem openMapsWithItems:items launchOptions:options];
 }
 
 @end

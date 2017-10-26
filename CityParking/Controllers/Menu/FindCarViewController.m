@@ -79,7 +79,7 @@
         cell = [[MapParkCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     MarkModel * model = [tableDataArr objectAtIndex:indexPath.row];
-    cell.parkImage.image = [UIImage imageNamed:model.tp];
+    [cell.parkImage setImageWithURL:[NSURL URLWithString:Get_Image_URL(model.tp)]];
     cell.parkDistance.text = [NSString stringWithFormat:@"%@米",model.juli];
     cell.parkName.text = model.cname;
     cell.parkAdress.text = model.dz;

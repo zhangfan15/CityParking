@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *parkAddress;
 @property (weak, nonatomic) IBOutlet UILabel *userNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lotPrice;
-@property (weak, nonatomic) IBOutlet UITextField *plateNumber;
+@property (weak, nonatomic) IBOutlet UIButton *plateNumber;
 @property (weak, nonatomic) IBOutlet UIButton *arrTimeButton;
 @property (weak, nonatomic) IBOutlet UIButton *livTimeButton;
 @property (strong, nonatomic) THDatePickerView *dateView;
@@ -66,6 +66,26 @@
 }
 
 - (IBAction)bottomButtonClick:(UIButton *)sender {
+    UserInfo * user = UserInformation;
+    NSDictionary * params = @{@"hyid":user.hyid,
+                              @"cname":markModel.cname,
+                              @"ckid":markModel.ckid,
+                              @"parkingNumber":detailmodel.code,
+                              @"plate_number":_plateNumber.titleLabel.text,
+                              @"arrdate":_arrTimeButton.titleLabel.text,
+                              @"depdate":_livTimeButton.titleLabel.text,
+                              @"price":markModel.charge
+                              };
+    [[NetworkTool shareNetworkTool] PostDataWithURL:@"mobile/member/insertbooking" AndParams:params IfShowHUD:YES Success:^(NSDictionary *responseObject) {
+        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"提交成功" message:@""];
+        [alertView addAction:[TYAlertAction actionWithTitle:@"确定" style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } Failure:^(NSString *errorInfo) {
+        
+    }];
 }
 
 /*
@@ -77,6 +97,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)plateButtonClick:(UIButton *)sender {
+    ChooseCarPlateView *v = [[ChooseCarPlateView alloc] init];
+    //设置回调
+    [v setDidChooseCarNumberBlock:^(NSString *str) {
+        if (str.length != 0) {
+            [sender setTitle:str forState:UIControlStateNormal];
+        }
+    }];
+    NSString *str = sender.currentTitle;
+    v.strDefault = str;
+    
+    [v show];
+}
 
 - (IBAction)arrButtonClick:(UIButton *)sender {
     [UIView animateWithDuration:0.3 animations:^{

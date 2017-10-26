@@ -23,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *remark;
 @property (nonatomic ,strong) AddressPickerView * pickerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableToBottomDistance;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UIView *tableBackView;
 
 @end
 
@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view addSubview:self.pickerView];
 }
 
 - (void)getParkDataWithArea {
@@ -110,14 +111,16 @@
 
 - (IBAction)cityButtonClick:(UIButton *)sender {
     [self closeKeyBoard];
-    [self.view addSubview:self.pickerView];
+    [UIView animateWithDuration:0.2 animations:^{
+        _pickerView.frame = CGRectMake(0, SCREEN_HEIGHT-215 , SCREEN_WIDTH, 215);
+    }];
 }
 
 - (IBAction)parkButtonClick:(UIButton *)sender {
     if (parkArr.count) {
         [self closeKeyBoard];
-        [UIView animateWithDuration:0.5 animations:^{
-            _tableToBottomDistance.constant = 0;
+        [UIView animateWithDuration:0.2 animations:^{
+            _tableBackView.frame = CGRectMake(0, SCREEN_HEIGHT-215 , SCREEN_WIDTH, 215);
         }];
     } else {
         TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"暂无数据，请先选择城市区县" message:@""];
@@ -131,14 +134,14 @@
 }
 
 - (IBAction)cancleButtonClick:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        _tableToBottomDistance.constant = -215;
+    [UIView animateWithDuration:0.3 animations:^{
+        _tableBackView.frame = CGRectMake(0, SCREEN_HEIGHT , SCREEN_WIDTH, 215);
     }];
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        _tableToBottomDistance.constant = -215;
+    [UIView animateWithDuration:0.3 animations:^{
+        _tableBackView.frame = CGRectMake(0, SCREEN_HEIGHT , SCREEN_WIDTH, 215);
     }];
     NSInteger index = [self.picker selectedRowInComponent:0];
     NSDictionary * tempDic = parkArr[index];
@@ -166,7 +169,7 @@
 
 - (AddressPickerView *)pickerView {
     if (!_pickerView) {
-        _pickerView = [[AddressPickerView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-215+20 , SCREEN_WIDTH, 215)];
+        _pickerView = [[AddressPickerView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT , SCREEN_WIDTH, 215)];
         _pickerView.delegate = self;
     }
     return _pickerView;
@@ -183,13 +186,17 @@
 */
 
 - (void)cancelBtnClick {
-    [_pickerView removeFromSuperview];
+    [UIView animateWithDuration:0.2 animations:^{
+        _pickerView.frame = CGRectMake(0, SCREEN_HEIGHT , SCREEN_WIDTH, 215);
+    }];
 }
 
 - (void)sureBtnClickReturnProvince:(NSString *)province City:(NSString *)city Area:(NSString *)area {
     cityStr = city;
     areaStr = area;
-    [_pickerView removeFromSuperview];
+    [UIView animateWithDuration:0.2 animations:^{
+        _pickerView.frame = CGRectMake(0, SCREEN_HEIGHT , SCREEN_WIDTH, 215);
+    }];
     [_cityButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_cityButton setTitle:[NSString stringWithFormat:@"%@ %@",city,area] forState:UIControlStateNormal];
     [self getParkDataWithArea];
